@@ -19,6 +19,7 @@ namespace Diary.Models.Database
         public void Configure(EntityTypeBuilder<DiaryTask> builder)
         {
             builder.HasKey(i => i.Id);
+            builder.Property(i => i.Headline).IsRequired(true);
         }
     }
 }

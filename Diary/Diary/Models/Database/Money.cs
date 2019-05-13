@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Diary.Models.Database
 {
@@ -22,6 +20,7 @@ namespace Diary.Models.Database
         public void Configure(EntityTypeBuilder<Money> builder)
         {
             builder.HasKey(i => i.Id);
+            builder.Property(i => i.Description).IsRequired(true);
         }
     }
 }

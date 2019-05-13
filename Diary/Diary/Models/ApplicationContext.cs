@@ -1,8 +1,5 @@
 ﻿using Diary.Models.Database;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Diary.Models
 {
@@ -11,6 +8,8 @@ namespace Diary.Models
         private readonly string databasePath;
 
         public DbSet<Money> Moneys { get; set; }
+
+        public DbSet<DiaryTask> DiaryTasks { get; set; } 
 
         public ApplicationContext(string databasePath)
         {
