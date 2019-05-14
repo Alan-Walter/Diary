@@ -1,5 +1,6 @@
 ﻿using Diary.Models;
 using Diary.Views;
+using Microsoft.EntityFrameworkCore;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -17,6 +18,7 @@ namespace Diary
             string dbPath = DependencyService.Get<IPath>().GetDatabasePath(DBFileName);
             DbContext = new ApplicationContext(dbPath);
             // Создаем бд, если она отсутствует
+            DbContext.Database.EnsureDeleted();
             DbContext.Database.EnsureCreated();
             MainPage = new NavigationPage(new MainPage());
         }

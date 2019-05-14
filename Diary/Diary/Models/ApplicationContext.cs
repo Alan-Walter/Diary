@@ -20,5 +20,12 @@ namespace Diary.Models
         {
             optionsBuilder.UseSqlite($"Filename={databasePath}");
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new DiaryTaskConfiguration());
+            modelBuilder.ApplyConfiguration(new MoneyConfiguration());
+            //base.OnModelCreating(modelBuilder);
+        }
     }
 }

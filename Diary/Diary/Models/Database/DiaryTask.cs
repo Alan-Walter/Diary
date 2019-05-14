@@ -7,7 +7,7 @@ namespace Diary.Models.Database
     {
         public int Id { get; set; }
 
-        public string Headline { get; set; }
+        public string Title { get; set; }
 
         public string Description { get; set; }
 
@@ -19,7 +19,7 @@ namespace Diary.Models.Database
         public void Configure(EntityTypeBuilder<DiaryTask> builder)
         {
             builder.HasKey(i => i.Id);
-            builder.Property(i => i.Headline).IsRequired(true);
+            builder.Property(i => i.Title).IsRequired(true);
         }
     }
 }

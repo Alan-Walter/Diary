@@ -10,12 +10,16 @@ using Xamarin.Forms.Xaml;
 namespace Diary.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MoneyPage : ContentPage
+    public partial class AddTaskPage : ContentPage
     {
-        public MoneyPage()
+        public AddTaskPage()
         {
             InitializeComponent();
-            MoneyListView.ItemsSource = (App.Current as App).DbContext.Moneys.Select(i => i).ToList();
-         }
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }
