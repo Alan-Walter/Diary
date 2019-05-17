@@ -2,11 +2,22 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Diary.Views.AddTaskPage">
+    
     <ContentPage.Content>
+
         <StackLayout Margin="5">
-            <Entry x:Name="TitleEntry" Text="{Binding Path=Title}" Placeholder="Заголовок задачи" />
-            <Entry x:Name="DescriptionEntry" Text="{Binding Path=Description}" Placeholder="Описание (необязательно)" />
-            <Button Text="Сохранить" Clicked="Button_Clicked" />
+            
+            <StackLayout VerticalOptions="CenterAndExpand">
+                <Entry x:Name="TitleEntry" Text="{Binding Path=Title}" Placeholder="Заголовок задачи" />
+                <Entry x:Name="DescriptionEntry" Text="{Binding Path=Description}" Placeholder="Описание (необязательно)" />
+            </StackLayout>
+
+            <StackLayout VerticalOptions="EndAndExpand">
+                <Button Text="Сохранить" Clicked="SaveButton_Clicked" />
+                <Button Text="Отмена" Clicked="CancelButton_Clicked" />
+            </StackLayout>
+
         </StackLayout>
+        
     </ContentPage.Content>
 </ContentPage>

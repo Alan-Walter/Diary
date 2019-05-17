@@ -18,11 +18,9 @@ namespace Diary.Views
             TasksListView.ItemsSource = (App.Current as App).DbContext.DiaryTasks.Select(i => i).ToList();
         }
 
-
-
         private async void AddItem_ClickedAsync(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new AddTaskPage());
+            await Navigation.PushAsync(new AddTaskPage());
         }
     }
 }
