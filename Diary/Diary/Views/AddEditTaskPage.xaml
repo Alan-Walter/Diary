@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Diary.Views.AddTaskPage">
+             x:Class="Diary.Views.AddEditTaskPage">
     
     <ContentPage.Content>
 
         <StackLayout Margin="5">
             
             <StackLayout VerticalOptions="CenterAndExpand">
-                <Entry x:Name="TitleEntry" Text="{Binding Path=Title}" Placeholder="Заголовок задачи" />
-                <Entry x:Name="DescriptionEntry" Text="{Binding Path=Description}" Placeholder="Описание (необязательно)" />
+                <Entry x:Name="TitleEntry" Text="{Binding Title}" Placeholder="Заголовок задачи" />
+                <Entry x:Name="DescriptionEntry" Text="{Binding Description}" Placeholder="Описание (необязательно)" />
             </StackLayout>
 
             <StackLayout VerticalOptions="EndAndExpand">

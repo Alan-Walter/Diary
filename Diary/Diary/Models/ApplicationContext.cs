@@ -1,24 +1,28 @@
 ﻿using Diary.Models.Database;
 using Microsoft.EntityFrameworkCore;
+using Xamarin.Forms;
 
 namespace Diary.Models
 {
     public class ApplicationContext : DbContext
     {
-        private readonly string databasePath;
+        private const string DBFileName = "diaryapp.db";
 
         public DbSet<Money> Moneys { get; set; }
 
         public DbSet<DiaryTask> DiaryTasks { get; set; } 
 
-        public ApplicationContext(string databasePath)
+        public ApplicationContext()
         {
-            this.databasePath = databasePath;
+            // Создаем бд, если она отсутствует
+            //this.Database.EnsureDeleted();
+            this.Database.EnsureCreated();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite($"Filename={databasePath}");
+            var dbPath = DependencyService.Get<IDatabasePath>().GetDatabasePath(DBFileName);
+            optionsBuilder.UseSqlite($"Filename={dbPath}");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

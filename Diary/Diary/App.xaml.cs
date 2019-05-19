@@ -9,17 +9,9 @@ namespace Diary
 {
     public partial class App : Application
     {
-        public readonly ApplicationContext DbContext;
-
-        public const string DBFileName = "diaryapp.db";
         public App()
         {
             InitializeComponent();
-            string dbPath = DependencyService.Get<IPath>().GetDatabasePath(DBFileName);
-            DbContext = new ApplicationContext(dbPath);
-            // Создаем бд, если она отсутствует
-            DbContext.Database.EnsureDeleted();
-            DbContext.Database.EnsureCreated();
             MainPage = new NavigationPage(new MainPage());
         }
 

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Diary.Models
 {
-    public interface IPath
+    public interface IDatabasePath
     {
         string GetDatabasePath(string filename);
     }

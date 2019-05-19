@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Diary.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,12 +16,18 @@ namespace Diary.Views
         public TaskPage()
         {
             InitializeComponent();
-            TasksListView.ItemsSource = (App.Current as App).DbContext.DiaryTasks.Select(i => i).ToList();
+            BindingContext = new TaskPageViewModel();
         }
 
         private async void AddItem_ClickedAsync(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new AddTaskPage());
+            await Navigation.PushAsync(new AddEditTaskPage());
+        }
+
+        private void Tasks_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            DiaryTaskViewModel task = (DiaryTaskViewModel)e.Item;
+            Navigation.PushAsync(new AddEditTaskPage(task), true);
         }
     }
 }

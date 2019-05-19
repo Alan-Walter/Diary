@@ -15,7 +15,6 @@ namespace Diary.Views
         public MoneyPage()
         {
             InitializeComponent();
-            MoneyListView.ItemsSource = (App.Current as App).DbContext.Moneys.Select(i => i).ToList();
          }
     }
 }

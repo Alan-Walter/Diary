@@ -6,10 +6,17 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Name="AddItem" Order="Primary" Text="Add" Icon="@drawable/baseline_add_24" Priority="0" Clicked="AddItem_ClickedAsync" />
     </ContentPage.ToolbarItems>
-    <ListView x:Name="TasksListView">
+    <ListView ItemsSource="{Binding DiaryTaskViews}" SelectedItem="{Binding SelectedDiaryTask, Mode=TwoWay}" ItemTapped="Tasks_ItemTapped">
         <ListView.ItemTemplate>
             <DataTemplate>
-                <TextCell Text="{Binding Title}" Detail="{Binding Description}"/>
+                <TextCell Text="{Binding Title}" 
+                          Detail="{Binding Description}">
+                    <TextCell.ContextActions>
+                        <MenuItem Text="Edit" />
+                        <MenuItem Text="Delete" IsDestructive="True" />
+                    </TextCell.ContextActions>
+                </TextCell>
+                
             </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>

@@ -7,7 +7,7 @@ using Diary.Models;
 [assembly: Dependency(typeof(AndroidDbPath))]
 namespace Diary.Droid
 {
-    class AndroidDbPath : IPath
+    class AndroidDbPath : IDatabasePath
     {
         public string GetDatabasePath(string filename)
         {

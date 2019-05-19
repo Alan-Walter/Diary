@@ -17,6 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\AddEditTaskPage.xaml.cs">
+      <DependentUpon>AddEditTaskPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\MoneyPage.xaml.cs">
       <DependentUpon>MoneyPage.xaml</DependentUpon>
     </Compile>
@@ -26,7 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\AddTaskPage.xaml">
+    <EmbeddedResource Update="Views\AddEditTaskPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\MoneyPage.xaml">
@@ -38,9 +41,5 @@
     <EmbeddedResource Update="Views\TimePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
   </ItemGroup>
 </Project>

@@ -22,6 +22,7 @@ namespace Diary.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            SQLitePCL.Batteries_V2.Init();
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 
