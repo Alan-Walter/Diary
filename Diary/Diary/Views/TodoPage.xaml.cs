@@ -16,7 +16,7 @@ namespace Diary.Views
         public TaskPage()
         {
             InitializeComponent();
-            BindingContext = new TaskPageViewModel();
+            BindingContext = new TodoPageViewModel();
         }
 
         private async void AddItem_ClickedAsync(object sender, EventArgs e)
@@ -24,10 +24,10 @@ namespace Diary.Views
             await Navigation.PushAsync(new AddEditTaskPage());
         }
 
-        private void Tasks_ItemTapped(object sender, ItemTappedEventArgs e)
+        private void Todo_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            DiaryTaskViewModel task = (DiaryTaskViewModel)e.Item;
-            Navigation.PushAsync(new AddEditTaskPage(task), true);
+            TodoViewModel todo = (TodoViewModel)e.Item;
+            Navigation.PushAsync(new AddEditTaskPage(todo), true);
         }
     }
 }

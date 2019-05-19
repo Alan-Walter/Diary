@@ -8,46 +8,46 @@ using System.Threading.Tasks;
 
 namespace Diary.ViewModels
 {
-    public class DiaryTaskViewModel : SimpleViewModel
+    public class TodoViewModel : SimpleViewModel
     {
-        DiaryTask diaryTask;
+        Todo todo;
 
         public string Title
         {
-            get { return diaryTask.Title; }
+            get { return todo.Title; }
             set
             {
                 if (value == Title) return;
-                diaryTask.Title = value;
+                todo.Title = value;
                 RaisePropertyChanged();
             }
         }
 
         public string Description
         {
-            get { return diaryTask.Description; }
+            get { return todo.Notes; }
             set
             {
-                if (value == diaryTask.Description) return;
-                diaryTask.Description = value;
+                if (value == todo.Notes) return;
+                todo.Notes = value;
                 RaisePropertyChanged();
             }
         }
 
-        public bool IsComplete
+        public bool Completed
         {
-            get { return diaryTask.IsComplete; }
+            get { return todo.Completed; }
             set
             {
-                if (value == diaryTask.IsComplete) return;
-                diaryTask.IsComplete = value;
+                if (value == todo.Completed) return;
+                todo.Completed = value;
                 RaisePropertyChanged();
             }
         }
 
-        public DiaryTaskViewModel(DiaryTask diaryTask)
+        public TodoViewModel(Todo todo)
         {
-            this.diaryTask = diaryTask;
+            this.todo = todo;
         }
     }
 }

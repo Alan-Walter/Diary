@@ -17,11 +17,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\AddEditTaskPage.xaml.cs">
-      <DependentUpon>AddEditTaskPage.xaml</DependentUpon>
+    <Compile Update="Views\AddEditTodoPage.xaml.cs">
+      <DependentUpon>AddEditTodoPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\MoneyPage.xaml.cs">
       <DependentUpon>MoneyPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\TodoPage.xaml.cs">
+      <DependentUpon>TodoPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\TimePage.xaml.cs">
       <DependentUpon>TimePage.xaml</DependentUpon>
@@ -29,13 +32,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\AddEditTaskPage.xaml">
+    <EmbeddedResource Update="Views\AddEditTodoPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\MoneyPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\TaskPage.xaml">
+    <EmbeddedResource Update="Views\TodoPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\TimePage.xaml">

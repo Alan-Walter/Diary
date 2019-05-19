@@ -10,12 +10,12 @@ namespace Diary.Models
 
         public DbSet<Money> Moneys { get; set; }
 
-        public DbSet<DiaryTask> DiaryTasks { get; set; } 
+        public DbSet<Todo> Todos { get; set; } 
 
         public ApplicationContext()
         {
             // Создаем бд, если она отсутствует
-            //this.Database.EnsureDeleted();
+            this.Database.EnsureDeleted();
             this.Database.EnsureCreated();
         }
 
@@ -27,7 +27,7 @@ namespace Diary.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new DiaryTaskConfiguration());
+            modelBuilder.ApplyConfiguration(new TodoConfiguration());
             modelBuilder.ApplyConfiguration(new MoneyConfiguration());
             //base.OnModelCreating(modelBuilder);
         }

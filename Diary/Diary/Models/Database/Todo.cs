@@ -3,20 +3,20 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Diary.Models.Database
 {
-    public class DiaryTask
+    public class Todo
     {
         public int Id { get; set; }
 
         public string Title { get; set; }
 
-        public string Description { get; set; }
+        public string Notes { get; set; }
 
-        public bool IsComplete { get; set; }
+        public bool Completed { get; set; }
     }
 
-    public class DiaryTaskConfiguration : IEntityTypeConfiguration<DiaryTask>
+    public class TodoConfiguration : IEntityTypeConfiguration<Todo>
     {
-        public void Configure(EntityTypeBuilder<DiaryTask> builder)
+        public void Configure(EntityTypeBuilder<Todo> builder)
         {
             builder.HasKey(i => i.Id);
             builder.Property(i => i.Title).IsRequired(true);

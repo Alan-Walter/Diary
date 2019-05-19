@@ -6,11 +6,11 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Name="AddItem" Order="Primary" Text="Add" Icon="@drawable/baseline_add_24" Priority="0" Clicked="AddItem_ClickedAsync" />
     </ContentPage.ToolbarItems>
-    <ListView ItemsSource="{Binding DiaryTaskViews}" SelectedItem="{Binding SelectedDiaryTask, Mode=TwoWay}" ItemTapped="Tasks_ItemTapped">
+    <ListView ItemsSource="{Binding TodoViews}" SelectedItem="{Binding SelectedTodo, Mode=TwoWay}" ItemTapped="Todo_ItemTapped">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <TextCell Text="{Binding Title}" 
-                          Detail="{Binding Description}">
+                          Detail="{Binding Notes}">
                     <TextCell.ContextActions>
                         <MenuItem Text="Edit" />
                         <MenuItem Text="Delete" IsDestructive="True" />

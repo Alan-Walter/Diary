@@ -17,12 +17,12 @@ namespace Diary.Views
         public AddEditTaskPage()
         {
             InitializeComponent();
-            this.BindingContext = new DiaryTaskViewModel(new Models.Database.DiaryTask());
+            this.BindingContext = new TodoViewModel(new Models.Database.Todo());
         }
 
-        public AddEditTaskPage(DiaryTaskViewModel diaryTaskViewModel) : this()
+        public AddEditTaskPage(TodoViewModel todoViewModel) : this()
         {
-            this.BindingContext = diaryTaskViewModel;
+            this.BindingContext = todoViewModel;
         }
 
         private async void SaveButton_Clicked(object sender, EventArgs e)

@@ -8,8 +8,9 @@
         <StackLayout Margin="5">
             
             <StackLayout VerticalOptions="CenterAndExpand">
-                <Entry x:Name="TitleEntry" Text="{Binding Title}" Placeholder="Заголовок задачи" />
-                <Entry x:Name="DescriptionEntry" Text="{Binding Description}" Placeholder="Описание (необязательно)" />
+                <Entry Text="{Binding Title}" Placeholder="Заголовок задачи" />
+                <Entry Text="{Binding Notes}" Placeholder="Описание (необязательно)" />
+                <Label Text="Выполнение"/>
             </StackLayout>
 
             <StackLayout VerticalOptions="EndAndExpand">
