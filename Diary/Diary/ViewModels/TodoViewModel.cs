@@ -23,7 +23,7 @@ namespace Diary.ViewModels
             }
         }
 
-        public string Description
+        public string Notes
         {
             get { return todo.Notes; }
             set

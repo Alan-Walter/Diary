@@ -1,21 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Diary.Views.AddEditTaskPage">
-    
+             x:Class="Diary.Views.AddEditTaskPage"
+             Title="Todo"
+             xmlns:cvt="clr-namespace:Diary.Converters">
+    <Page.Resources>
+        <cvt:TitleLengthToColorConverter x:Key="plcolorConverter" />
+    </Page.Resources>
+
     <ContentPage.Content>
 
-        <StackLayout Margin="5">
-            
-            <StackLayout VerticalOptions="CenterAndExpand">
-                <Entry Text="{Binding Title}" Placeholder="Заголовок задачи" />
-                <Entry Text="{Binding Notes}" Placeholder="Описание (необязательно)" />
-                <Label Text="Выполнение"/>
+        <StackLayout Margin="20">
+
+            <StackLayout VerticalOptions="CenterAndExpand" Spacing="20">
+                <Entry BackgroundColor="{Binding Title, Converter={StaticResource plcolorConverter}}" Text="{Binding Title}" Placeholder="Title" />
+                <Entry Text="{Binding Notes}" Placeholder="Notes" />
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Completed"/>
+                    <Switch IsToggled="{Binding Completed}" />
+                </StackLayout>
             </StackLayout>
 
-            <StackLayout VerticalOptions="EndAndExpand">
-                <Button Text="Сохранить" Clicked="SaveButton_Clicked" />
-                <Button Text="Отмена" Clicked="CancelButton_Clicked" />
+            <StackLayout VerticalOptions="EndAndExpand" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Button Text="Cancel" Clicked="CancelButton_Clicked" />
+                <Button Text="Save" Clicked="SaveButton_Clicked" />
             </StackLayout>
 
         </StackLayout>
