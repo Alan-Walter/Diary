@@ -7,17 +7,18 @@
         Visual="Material">
 
     <TabBar>
-        <Tab Title="To Do List"
+        
+        <Tab Title="To Do List" 
+             Route="todo"
              Icon="@drawable/baseline_assignment_24">
-            <ShellContent>
-                <local:TodoPage />
-            </ShellContent>
+            <ShellContent ContentTemplate ="{DataTemplate local:TodoPage}" Route="collection"/>
         </Tab>
-        <Tab Title="Money"
+        
+        <Tab Title="Money" 
+             Route="money"
              Icon="@drawable/baseline_attach_money_24">
-            <ShellContent>
-                <local:MoneyPage />
-            </ShellContent>
+            <ShellContent ContentTemplate ="{DataTemplate local:MoneyPage}"/>
         </Tab>
+        
     </TabBar>
 </Shell>

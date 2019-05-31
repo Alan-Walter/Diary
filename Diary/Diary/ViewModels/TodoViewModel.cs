@@ -1,16 +1,15 @@
 ﻿using Diary.Models;
 using Diary.Models.Database;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace Diary.ViewModels
 {
     public class TodoViewModel : SimpleViewModel
     {
-        Todo todo;
+        readonly Todo todo;
+
+        public Command SaveCommand { get; }
 
         public string Title
         {
@@ -20,6 +19,7 @@ namespace Diary.ViewModels
                 if (value == Title) return;
                 todo.Title = value;
                 RaisePropertyChanged();
+                SaveCommand.ChangeCanExecute();
             }
         }
 
@@ -48,6 +48,18 @@ namespace Diary.ViewModels
         public TodoViewModel(Todo todo)
         {
             this.todo = todo;
+            SaveCommand = new Command(async () => await Save(), 
+                () => !string.IsNullOrEmpty(Title));
+        }
+
+        private async Task Save()
+        {
+            using(var dbContext = new ApplicationContext())
+            {
+                dbContext.Todos.Add(todo);
+                await dbContext.SaveChangesAsync();
+            }
+            Shell.Current.SendBackButtonPressed();
         }
     }
 }

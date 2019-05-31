@@ -15,7 +15,7 @@ namespace Diary.Models
         public ApplicationContext()
         {
             // Создаем бд, если она отсутствует
-            this.Database.EnsureDeleted();
+            //this.Database.EnsureDeleted();
             this.Database.EnsureCreated();
         }
 

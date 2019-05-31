@@ -11,6 +11,13 @@ namespace Diary.Views
         public MainPage()
         {
             InitializeComponent();
+            RegisterRoutes();
+        }
+
+        private void RegisterRoutes()
+        {
+            //  https://docs.microsoft.com/ru-ru/xamarin/xamarin-forms/app-fundamentals/shell/navigation
+            Routing.RegisterRoute("//todo/details", typeof(DetailsTodoPage));
         }
     }
 }

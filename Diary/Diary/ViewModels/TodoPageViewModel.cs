@@ -1,5 +1,4 @@
 ﻿using Diary.Models;
-using Diary.Views;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -38,7 +37,7 @@ namespace Diary.ViewModels
 
         private async Task AddTodoAsync()
         {
-            await App.Current.MainPage.Navigation.PushAsync(new AddEditTaskPage());
+            await Shell.Current.GoToAsync("//todo/details");
         }
     }
 }

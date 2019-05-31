@@ -9,13 +9,13 @@
     <CollectionView ItemsSource="{Binding TodoViews}" EmptyView="No items to display" SelectedItem="{Binding SelectedTodo, Mode=TwoWay}">
         <CollectionView.ItemTemplate>
             <DataTemplate>
-                <Grid>
+                <Grid Padding="10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Switch IsToggled="{Binding Completed}"/>
-                    <Label Text="{Binding Title}"/>
+                    <Switch Grid.Column="0" IsToggled="{Binding Completed}"/>
+                    <Label Grid.Column="1" Text="{Binding Title}"/>
                 </Grid>
             </DataTemplate>
         </CollectionView.ItemTemplate>
