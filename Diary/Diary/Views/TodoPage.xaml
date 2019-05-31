@@ -4,7 +4,7 @@
              x:Class="Diary.Views.TodoPage"
              Title="To Do List">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Name="AddItem" Order="Primary" Text="Add" Icon="@drawable/baseline_add_24" Priority="0" Clicked="AddItem_ClickedAsync" />
+        <ToolbarItem Text="Add" Icon="@drawable/baseline_add_24" Command="{Binding AddCommand}"/>
     </ContentPage.ToolbarItems>
     <CollectionView ItemsSource="{Binding TodoViews}" EmptyView="No items to display" SelectedItem="{Binding SelectedTodo, Mode=TwoWay}">
         <CollectionView.ItemTemplate>
@@ -17,14 +17,6 @@
                     <Switch IsToggled="{Binding Completed}"/>
                     <Label Text="{Binding Title}"/>
                 </Grid>
-                <!--<TextCell Text="{Binding Title}" 
-                          Detail="{Binding Notes}">
-                    <TextCell.ContextActions>
-                        <MenuItem Text="Edit" />
-                        <MenuItem Text="Delete" IsDestructive="True" />
-                    </TextCell.ContextActions>
-                </TextCell>-->
-                
             </DataTemplate>
         </CollectionView.ItemTemplate>
     </CollectionView>

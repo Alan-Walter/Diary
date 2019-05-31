@@ -1,7 +1,10 @@
 ﻿using Diary.Models;
+using Diary.Views;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace Diary.ViewModels
 {
@@ -10,6 +13,7 @@ namespace Diary.ViewModels
         TodoViewModel selectedTodo;
 
         public IList<TodoViewModel> TodoViews { get; private set; }
+        public Command AddCommand { get; }
 
         public TodoViewModel SelectedTodo
         {
@@ -29,6 +33,12 @@ namespace Diary.ViewModels
             {
                 TodoViews = new ObservableCollection<TodoViewModel>(dbContext.Todos.Select(i => new TodoViewModel(i)));
             }
+            AddCommand = new Command(async () => await AddTodoAsync());
+        }
+
+        private async Task AddTodoAsync()
+        {
+            await App.Current.MainPage.Navigation.PushAsync(new AddEditTaskPage());
         }
     }
 }

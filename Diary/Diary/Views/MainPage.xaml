@@ -6,16 +6,11 @@
         FlyoutBehavior="Disabled"
         Visual="Material">
 
-    <!--<TabbedPage.Children>
-        <local:MoneyPage Icon="@drawable/baseline_attach_money_24"/>
-        <local:TaskPage Icon="@drawable/baseline_assignment_24"/>
-        <local:TimePage Icon="@drawable/baseline_timeline_24"/>
-    </TabbedPage.Children>-->
     <TabBar>
         <Tab Title="To Do List"
              Icon="@drawable/baseline_assignment_24">
             <ShellContent>
-                <local:TaskPage />
+                <local:TodoPage />
             </ShellContent>
         </Tab>
         <Tab Title="Money"

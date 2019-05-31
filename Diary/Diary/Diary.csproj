@@ -26,9 +26,6 @@
     <Compile Update="Views\TodoPage.xaml.cs">
       <DependentUpon>TodoPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\TimePage.xaml.cs">
-      <DependentUpon>TimePage.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -39,9 +36,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\TodoPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\TimePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
