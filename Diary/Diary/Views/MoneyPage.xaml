@@ -12,7 +12,7 @@
     </ContentPage.ToolbarItems>
     <ListView x:Name="MoneyListView">
         <ListView.Header>
-            <Label x:Name="DateLabel" Text="May 2019" HeightRequest="20" HorizontalTextAlignment="Center" BackgroundColor="#7EB8FA" VerticalTextAlignment="Center"/>
+            <Label x:Name="DateLabel" Text="May 2019" HeightRequest="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
         </ListView.Header>
         <ListView.ItemTemplate>
             <DataTemplate>

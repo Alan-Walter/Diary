@@ -1,21 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:Diary.Views"
-             x:Class="Diary.Views.MainPage"
-            Title="Diary"
-            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
-            android:TabbedPage.ToolbarPlacement="Bottom"
-            BarBackgroundColor="#2196F3"
-            BarTextColor="White"
-            android:TabbedPage.BarItemColor="#66FFFFFF"
-            android:TabbedPage.BarSelectedItemColor="White"
-            android:TabbedPage.IsSwipePagingEnabled="False">
+<Shell  xmlns="http://xamarin.com/schemas/2014/forms"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:local="clr-namespace:Diary.Views"
+        x:Class="Diary.Views.MainPage"
+        FlyoutBehavior="Disabled"
+        Visual="Material">
 
-    <TabbedPage.Children>
+    <!--<TabbedPage.Children>
         <local:MoneyPage Icon="@drawable/baseline_attach_money_24"/>
         <local:TaskPage Icon="@drawable/baseline_assignment_24"/>
         <local:TimePage Icon="@drawable/baseline_timeline_24"/>
-    </TabbedPage.Children>
-
-</TabbedPage>
+    </TabbedPage.Children>-->
+    <FlyoutItem>
+        <Tab Title="To Do List"
+             Icon="@drawable/baseline_assignment_24">
+            <ShellContent>
+                <local:TaskPage />
+            </ShellContent>
+        </Tab>
+        <Tab Title="Money"
+             Icon="@drawable/baseline_attach_money_24">
+            <ShellContent>
+                <local:MoneyPage />
+            </ShellContent>
+        </Tab>
+    </FlyoutItem>
+</Shell>
