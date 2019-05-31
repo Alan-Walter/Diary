@@ -13,9 +13,9 @@ namespace Diary.Converters
             var str = (string)value;
 
             if (string.IsNullOrEmpty(str))
-                return Color.Red;
+                return Color.PaleVioletRed;
             else
-                return Color.Green;
+                return Color.White;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

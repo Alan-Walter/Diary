@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-            x:Class="Diary.Views.MoneyPage"
-             Title="Money">
+<ContentPage 
+        xmlns="http://xamarin.com/schemas/2014/forms"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        x:Class="Diary.Views.MoneyPage"
+        Title="Money">
 
-    <ContentPage.ToolbarItems>
+    <!--<ContentPage.ToolbarItems>
         <ToolbarItem Name="StatisticsItem" Order="Primary" Text="Statistics" Priority="0" />
         <ToolbarItem Name="LeftItem" Order="Primary" Text="Left" Icon="@drawable/baseline_arrow_left_24" Priority="1" />
         <ToolbarItem Name="RightItem" Order="Primary" Text="Right" Icon="@drawable/baseline_arrow_right_24" Priority="2" />
@@ -26,7 +27,7 @@
                 </ViewCell>
             </DataTemplate>
         </ListView.ItemTemplate>
-    </ListView>
+    </ListView>-->
 
 
 </ContentPage>

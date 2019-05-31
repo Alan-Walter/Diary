@@ -11,7 +11,7 @@
         <local:TaskPage Icon="@drawable/baseline_assignment_24"/>
         <local:TimePage Icon="@drawable/baseline_timeline_24"/>
     </TabbedPage.Children>-->
-    <FlyoutItem>
+    <TabBar>
         <Tab Title="To Do List"
              Icon="@drawable/baseline_assignment_24">
             <ShellContent>
@@ -24,5 +24,5 @@
                 <local:MoneyPage />
             </ShellContent>
         </Tab>
-    </FlyoutItem>
+    </TabBar>
 </Shell>

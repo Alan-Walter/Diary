@@ -1,23 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Diary.Views.TaskPage"
+             x:Class="Diary.Views.TodoPage"
              Title="To Do List">
     <ContentPage.ToolbarItems>
         <ToolbarItem Name="AddItem" Order="Primary" Text="Add" Icon="@drawable/baseline_add_24" Priority="0" Clicked="AddItem_ClickedAsync" />
     </ContentPage.ToolbarItems>
-    <ListView ItemsSource="{Binding TodoViews}" SelectedItem="{Binding SelectedTodo, Mode=TwoWay}" ItemTapped="Todo_ItemTapped">
-        <ListView.ItemTemplate>
+    <CollectionView ItemsSource="{Binding TodoViews}" EmptyView="No items to display" SelectedItem="{Binding SelectedTodo, Mode=TwoWay}">
+        <CollectionView.ItemTemplate>
             <DataTemplate>
-                <TextCell Text="{Binding Title}" 
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Switch IsToggled="{Binding Completed}"/>
+                    <Label Text="{Binding Title}"/>
+                </Grid>
+                <!--<TextCell Text="{Binding Title}" 
                           Detail="{Binding Notes}">
                     <TextCell.ContextActions>
                         <MenuItem Text="Edit" />
                         <MenuItem Text="Delete" IsDestructive="True" />
                     </TextCell.ContextActions>
-                </TextCell>
+                </TextCell>-->
                 
             </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
 </ContentPage>

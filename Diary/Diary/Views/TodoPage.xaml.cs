@@ -11,23 +11,25 @@ using Xamarin.Forms.Xaml;
 namespace Diary.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TaskPage : ContentPage
+    public partial class TodoPage : ContentPage
     {
-        public TaskPage()
+        TodoPageViewModel todoPageViewModel;
+
+        public TodoPage()
         {
             InitializeComponent();
-            BindingContext = new TodoPageViewModel();
+            BindingContext = todoPageViewModel = new TodoPageViewModel();
         }
 
-        private async void AddItem_ClickedAsync(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new AddEditTaskPage());
-        }
+        //private async void AddItem_ClickedAsync(object sender, EventArgs e)
+        //{
+        //    await Navigation.PushAsync(new AddEditTaskPage());
+        //}
 
-        private void Todo_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-            TodoViewModel todo = (TodoViewModel)e.Item;
-            Navigation.PushAsync(new AddEditTaskPage(todo), true);
-        }
+        //private void Todo_ItemTapped(object sender, ItemTappedEventArgs e)
+        //{
+        //    TodoViewModel todo = (TodoViewModel)e.Item;
+        //    Navigation.PushAsync(new AddEditTaskPage(todo), true);
+        //}
     }
 }
