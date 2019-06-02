@@ -1,8 +1,8 @@
-﻿using Diary.Models.Database;
+﻿using Diary.Models;
 using Microsoft.EntityFrameworkCore;
 using Xamarin.Forms;
 
-namespace Diary.Models
+namespace Diary
 {
     public class ApplicationContext : DbContext
     {
@@ -10,13 +10,13 @@ namespace Diary.Models
 
         public DbSet<Money> Moneys { get; set; }
 
-        public DbSet<Todo> Todos { get; set; } 
+        public DbSet<Todo> Todos { get; set; }
 
         public ApplicationContext()
         {
             // Создаем бд, если она отсутствует
             //this.Database.EnsureDeleted();
-            this.Database.EnsureCreated();
+            Database.EnsureCreated();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

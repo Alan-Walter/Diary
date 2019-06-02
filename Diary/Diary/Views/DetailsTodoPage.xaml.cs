@@ -1,4 +1,5 @@
-﻿using Diary.ViewModels;
+﻿using Diary.Models;
+using Diary.ViewModels;
 using System;
 
 using Xamarin.Forms;
@@ -12,7 +13,7 @@ namespace Diary.Views
         public DetailsTodoPage()
         {
             InitializeComponent();
-            this.BindingContext = new TodoViewModel(new Models.Database.Todo());
+            this.BindingContext = new TodoViewModel(new Todo());
         }
 
         public DetailsTodoPage(TodoViewModel todoViewModel) : this()

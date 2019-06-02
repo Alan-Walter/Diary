@@ -2,7 +2,6 @@
 using Diary.Droid;
 using System.IO;
 using Xamarin.Forms;
-using Diary.Models;
 
 [assembly: Dependency(typeof(AndroidDbPath))]
 namespace Diary.Droid

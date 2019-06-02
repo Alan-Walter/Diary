@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 
-namespace Diary.Models.Database
+namespace Diary.Models
 {
     public class Money
     {

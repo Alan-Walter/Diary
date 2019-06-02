@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Diary.Models.Database
+namespace Diary.Models
 {
     public class Todo
     {

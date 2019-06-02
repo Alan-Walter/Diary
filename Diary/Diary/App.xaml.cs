@@ -9,6 +9,21 @@ namespace Diary
 {
     public partial class App : Application
     {
+        /// <summary>
+        /// Объект для работы с базой данных
+        /// </summary>
+        static ApplicationContext database;
+
+        public ApplicationContext Database
+        {
+            get
+            {
+                if (database == null)
+                    database = new ApplicationContext();
+                return database;
+            }
+        }
+
         public App()
         {
             InitializeComponent();
