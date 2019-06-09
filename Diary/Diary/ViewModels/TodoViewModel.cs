@@ -29,6 +29,7 @@ namespace Diary.ViewModels
                 if (value == Title) return;
                 Todo.Title = value;
                 RaisePropertyChanged();
+                TodoPageViewModel.SaveCommand.ChangeCanExecute();
             }
         }
 

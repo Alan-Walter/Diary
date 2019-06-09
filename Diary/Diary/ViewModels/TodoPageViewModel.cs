@@ -37,7 +37,10 @@ namespace Diary.ViewModels
             repository = new TodoRepository();
             TodoViews = new ObservableCollection<TodoViewModel>(repository.GetListAsync().Result.Select(i => new TodoViewModel(i)));
             AddCommand = new Command(async () => await AddTodoAsync());
-            SaveCommand = new Command(async (_) => await SaveTodoAsync(_));  //  добавить проверку CanExecute
+            SaveCommand = new Command(async (_) => await SaveTodoAsync(_), (_) => !string.IsNullOrEmpty((_ as TodoViewModel)?.Title));
+            CancelCommand = new Command(async () => await CancelAsync());
+            DeleteCommand = new Command(async (_) => await DeleteTodoAsync(_));
+            //  https://metanit.com/sharp/xamarin/11.1.php
         }
 
         private async Task AddTodoAsync()
@@ -48,13 +51,36 @@ namespace Diary.ViewModels
         private async Task SaveTodoAsync(object obj)
         {
             var todoViewModel = (obj as TodoViewModel);
-            if (todoViewModel == null) return;
-            var todo = todoViewModel.Todo;
-            var db = await repository.GetAsync(todo.Id);
-            if (db == null)
-                await repository.CreateAsync(todo);
-            else await repository.UpdateAsync(todo);
-            TodoViews.Add(todoViewModel);
+            if (todoViewModel != null)
+            {
+                var todo = todoViewModel.Todo;
+                var db = await repository.GetAsync(todo.Id);
+                if (db == null)
+                {
+                    await repository.CreateAsync(todo);
+                    TodoViews.Add(todoViewModel);
+                }
+                else await repository.UpdateAsync(todo);
+                
+            }
+            await Shell.Current.Navigation.PopAsync();
+        }
+
+        private async Task DeleteTodoAsync(object obj)
+        {
+            var todoViewModel = (obj as TodoViewModel);
+            if (todoViewModel != null)
+            {
+                var todo = todoViewModel.Todo;
+                var db = await repository.GetAsync(todo.Id);
+                if (db != null)
+                    await repository.DeleteAsync(db);
+            }
+            await Shell.Current.Navigation.PopAsync();
+        }
+
+        private async Task CancelAsync()
+        {
             await Shell.Current.Navigation.PopAsync();
         }
     }
