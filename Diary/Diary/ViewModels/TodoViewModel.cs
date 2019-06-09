@@ -6,59 +6,57 @@ namespace Diary.ViewModels
 {
     public class TodoViewModel : SimpleViewModel
     {
-        readonly Todo todo;
+        private TodoPageViewModel todoPageViewModel;
 
-        public Command SaveCommand { get; }
+        public Todo Todo { get; private set; }
+
+        public TodoPageViewModel TodoPageViewModel
+        {
+            get { return todoPageViewModel; }
+            set
+            {
+                if (todoPageViewModel == value) return;
+                todoPageViewModel = value;
+                RaisePropertyChanged();
+            }
+        }
 
         public string Title
         {
-            get { return todo.Title; }
+            get { return Todo.Title; }
             set
             {
                 if (value == Title) return;
-                todo.Title = value;
+                Todo.Title = value;
                 RaisePropertyChanged();
-                SaveCommand.ChangeCanExecute();
             }
         }
 
         public string Notes
         {
-            get { return todo.Notes; }
+            get { return Todo.Notes; }
             set
             {
-                if (value == todo.Notes) return;
-                todo.Notes = value;
+                if (value == Todo.Notes) return;
+                Todo.Notes = value;
                 RaisePropertyChanged();
             }
         }
 
         public bool Completed
         {
-            get { return todo.Completed; }
+            get { return Todo.Completed; }
             set
             {
-                if (value == todo.Completed) return;
-                todo.Completed = value;
+                if (value == Todo.Completed) return;
+                Todo.Completed = value;
                 RaisePropertyChanged();
             }
         }
 
         public TodoViewModel(Todo todo)
         {
-            this.todo = todo;
-            SaveCommand = new Command(async () => await Save(), 
-                () => !string.IsNullOrEmpty(Title));
-        }
-
-        private async Task Save()
-        {
-            using(var dbContext = new ApplicationContext())
-            {
-                dbContext.Todos.Add(todo);
-                await dbContext.SaveChangesAsync();
-            }
-            Shell.Current.SendBackButtonPressed();
+            this.Todo = todo;
         }
     }
 }

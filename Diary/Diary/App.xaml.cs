@@ -1,9 +1,5 @@
-﻿using Diary.Models;
-using Diary.Views;
-using Microsoft.EntityFrameworkCore;
-using System;
+﻿using Diary.Views;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace Diary
 {
