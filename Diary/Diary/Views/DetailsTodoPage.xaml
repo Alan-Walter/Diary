@@ -4,7 +4,6 @@
              x:Class="Diary.Views.DetailsTodoPage"
              Title="Todo">
     <ContentPage.Content>
-        
         <StackLayout Margin="20">
             <StackLayout VerticalOptions="CenterAndExpand" Spacing="20">
                 <Entry Text="{Binding Title}" Placeholder="Title" />

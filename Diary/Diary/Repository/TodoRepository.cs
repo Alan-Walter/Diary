@@ -12,7 +12,7 @@ namespace Diary.Repository
 
         public TodoRepository()
         {
-            dbContext = (Xamarin.Forms.Application.Current as App).Database;
+            dbContext = App.Database;
         }
 
         public async Task CreateAsync(Todo item)

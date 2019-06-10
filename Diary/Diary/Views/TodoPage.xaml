@@ -6,16 +6,21 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Icon="@drawable/baseline_add_24" Command="{Binding AddCommand}"/>
     </ContentPage.ToolbarItems>
-    <CollectionView ItemsSource="{Binding TodoViews}" EmptyView="No items to display" SelectedItem="{Binding SelectedTodo, Mode=TwoWay}">
+    <CollectionView ItemsSource="{Binding TodoViews}" EmptyView="No items to display" SelectedItem="{Binding SelectedTodo, Mode=TwoWay}" SelectionMode="Single" SelectionChangedCommand="{Binding SelectCommand}">
         <CollectionView.ItemTemplate>
             <DataTemplate>
                 <Grid Padding="10">
-                    <Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <!--<Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Switch Grid.Column="0" IsToggled="{Binding Completed}"/>
-                    <Label Grid.Column="1" Text="{Binding Title}"/>
+                    </Grid.ColumnDefinitions>-->
+                    <!--<Switch Grid.Column="0" IsToggled="{Binding Completed}"/>-->
+                    <Label Grid.Row="0" Text="{Binding Title}"/>
+                    <Label Grid.Row="1" Margin="2" Opacity="0.8" Text="{Binding Notes}"/>
                 </Grid>
             </DataTemplate>
         </CollectionView.ItemTemplate>

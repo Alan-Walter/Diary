@@ -6,20 +6,9 @@ namespace Diary.ViewModels
 {
     public class TodoViewModel : SimpleViewModel
     {
-        private TodoPageViewModel todoPageViewModel;
-
         public Todo Todo { get; private set; }
 
-        public TodoPageViewModel TodoPageViewModel
-        {
-            get { return todoPageViewModel; }
-            set
-            {
-                if (todoPageViewModel == value) return;
-                todoPageViewModel = value;
-                RaisePropertyChanged();
-            }
-        }
+        public TodoPageViewModel TodoPageViewModel { get; }
 
         public string Title
         {
@@ -55,9 +44,10 @@ namespace Diary.ViewModels
             }
         }
 
-        public TodoViewModel(Todo todo)
+        public TodoViewModel(Todo todo, TodoPageViewModel todoPageViewModel)
         {
             this.Todo = todo;
+            this.TodoPageViewModel = todoPageViewModel;
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Diary
         /// </summary>
         static ApplicationContext database;
 
-        public ApplicationContext Database
+        public static ApplicationContext Database
         {
             get
             {
