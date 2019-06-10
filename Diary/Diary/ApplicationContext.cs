@@ -12,10 +12,12 @@ namespace Diary
 
         public DbSet<Todo> Todos { get; set; }
 
+        public DbSet<Category> Categories { get; set; }
+
         public ApplicationContext()
         {
             // Создаем бд, если она отсутствует
-            //this.Database.EnsureDeleted();
+            this.Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 
@@ -29,6 +31,7 @@ namespace Diary
         {
             modelBuilder.ApplyConfiguration(new TodoConfiguration());
             modelBuilder.ApplyConfiguration(new MoneyConfiguration());
+            modelBuilder.ApplyConfiguration(new CategoryConfiguration());
             //base.OnModelCreating(modelBuilder);
         }
     }

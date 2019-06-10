@@ -12,6 +12,8 @@ namespace Diary.Models
 
         public string Description { get; set; }
 
+        public Category Category { get; set; }
+
         public DateTime Date { get; set; }
     }
 
@@ -20,7 +22,8 @@ namespace Diary.Models
         public void Configure(EntityTypeBuilder<Money> builder)
         {
             builder.HasKey(i => i.Id);
-            builder.Property(i => i.Description).IsRequired(true);
+            builder.Property(i => i.Date).HasDefaultValueSql("getdate()").ValueGeneratedOnAdd();
+            //builder.Property(i => i.Category).IsRequired();
         }
     }
 }
