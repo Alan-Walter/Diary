@@ -17,7 +17,8 @@
         <Tab Title="Money" 
              Route="money"
              Icon="@drawable/baseline_attach_money_24">
-            <ShellContent ContentTemplate ="{DataTemplate local:MoneyPage}"/>
+            <ShellContent ContentTemplate ="{DataTemplate local:MoneyStatsPage}" Title="Stats"/>
+            <ShellContent ContentTemplate ="{DataTemplate local:MoneyHistoryPage}" Title="History"/>
         </Tab>
         
     </TabBar>

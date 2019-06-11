@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace Diary.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MoneyPage : ContentPage
+    public partial class MoneyStatsPage : ContentPage
     {
-        public MoneyPage()
+        public MoneyStatsPage()
         {
             InitializeComponent();
          }
