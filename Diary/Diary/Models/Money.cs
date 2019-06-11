@@ -1,10 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Diary.Models.Database
+namespace Diary.Models
 {
     public class Money
     {
@@ -14,6 +12,8 @@ namespace Diary.Models.Database
 
         public string Description { get; set; }
 
+        public Category Category { get; set; }
+
         public DateTime Date { get; set; }
     }
 
@@ -22,6 +22,7 @@ namespace Diary.Models.Database
         public void Configure(EntityTypeBuilder<Money> builder)
         {
             builder.HasKey(i => i.Id);
+            builder.Property(i => i.Date).HasDefaultValueSql("getdate()").ValueGeneratedOnAdd();
         }
     }
 }

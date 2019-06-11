@@ -12,28 +12,39 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.2.4" />
-    <PackageReference Include="Xamarin.Forms" Version="3.6.0.264807" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.0.1" />
+    <PackageReference Include="Xamarin.Forms" Version="4.0.0.471375" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\MoneyPage.xaml.cs">
-      <DependentUpon>MoneyPage.xaml</DependentUpon>
+    <Compile Update="Views\DetailsTodoPage.xaml.cs">
+      <DependentUpon>DetailsTodoPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\TimePage.xaml.cs">
-      <DependentUpon>TimePage.xaml</DependentUpon>
+    <Compile Update="Views\MoneyStatsPage.xaml.cs">
+      <DependentUpon>MoneyStatsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\TodoPage.xaml.cs">
+      <DependentUpon>TodoPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\MoneyPage.xaml">
+    <EmbeddedResource Update="Views\DetailsTodoPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\TaskPage.xaml">
+    <EmbeddedResource Update="Views\MoneyHistoryPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\TimePage.xaml">
+    <EmbeddedResource Update="Views\MoneyStatsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\TodoPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Converters\" />
+    <Folder Include="Services\" />
   </ItemGroup>
 </Project>

@@ -4,6 +4,7 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
+using Xamarin.Forms;
 
 namespace Diary.iOS
 {
@@ -22,7 +23,10 @@ namespace Diary.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            Forms.SetFlags("CollectionView_Experimental");
+            SQLitePCL.Batteries_V2.Init();
             global::Xamarin.Forms.Forms.Init();
+            FormsMaterial.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

@@ -1,24 +1,29 @@
-﻿using Diary.Models;
-using Diary.Views;
-using System;
+﻿using Diary.Views;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace Diary
 {
     public partial class App : Application
     {
-        public readonly ApplicationContext DbContext;
+        /// <summary>
+        /// Объект для работы с базой данных
+        /// </summary>
+        static ApplicationContext database;
 
-        public const string DBFileName = "diaryapp.db";
+        public static ApplicationContext Database
+        {
+            get
+            {
+                if (database == null)
+                    database = new ApplicationContext();
+                return database;
+            }
+        }
+
         public App()
         {
             InitializeComponent();
-            string dbPath = DependencyService.Get<IPath>().GetDatabasePath(DBFileName);
-            DbContext = new ApplicationContext(dbPath);
-            // Создаем бд, если она отсутствует
-            DbContext.Database.EnsureCreated();
-            MainPage = new NavigationPage(new MainPage());
+            MainPage = new MainPage();
         }
 
         protected override void OnStart()

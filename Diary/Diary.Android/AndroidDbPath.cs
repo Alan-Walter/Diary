@@ -2,12 +2,11 @@
 using Diary.Droid;
 using System.IO;
 using Xamarin.Forms;
-using Diary.Models;
 
 [assembly: Dependency(typeof(AndroidDbPath))]
 namespace Diary.Droid
 {
-    class AndroidDbPath : IPath
+    class AndroidDbPath : IDatabasePath
     {
         public string GetDatabasePath(string filename)
         {

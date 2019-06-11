@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Diary.ViewModels;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -10,11 +6,12 @@ using Xamarin.Forms.Xaml;
 namespace Diary.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TaskPage : ContentPage
+    public partial class TodoPage : ContentPage
     {
-        public TaskPage()
+        public TodoPage()
         {
             InitializeComponent();
+            BindingContext = new TodoPageViewModel();
         }
     }
 }
