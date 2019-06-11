@@ -5,29 +5,12 @@
         x:Class="Diary.Views.MoneyPage"
         Title="Money">
 
-    <!--<ContentPage.ToolbarItems>
-        <ToolbarItem Name="StatisticsItem" Order="Primary" Text="Statistics" Priority="0" />
-        <ToolbarItem Name="LeftItem" Order="Primary" Text="Left" Icon="@drawable/baseline_arrow_left_24" Priority="1" />
-        <ToolbarItem Name="RightItem" Order="Primary" Text="Right" Icon="@drawable/baseline_arrow_right_24" Priority="2" />
+    <ContentPage.ToolbarItems>
         <ToolbarItem Name="AddItem" Order="Primary" Text="Add" Icon="@drawable/baseline_add_24" Priority="3" />
     </ContentPage.ToolbarItems>
-    <ListView x:Name="MoneyListView">
-        <ListView.Header>
-            <Label x:Name="DateLabel" Text="May 2019" HeightRequest="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-        </ListView.Header>
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <ViewCell.View>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="{Binding Value}" FontSize="18" />
-                            <Label Text="{Binding Description}" />
-                        </StackLayout>
-                    </ViewCell.View>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>-->
+    <StackLayout>
+        <Label Text="Статистика"/>
+    </StackLayout>
 
 
 </ContentPage>

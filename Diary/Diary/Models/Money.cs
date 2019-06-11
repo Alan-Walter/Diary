@@ -23,7 +23,6 @@ namespace Diary.Models
         {
             builder.HasKey(i => i.Id);
             builder.Property(i => i.Date).HasDefaultValueSql("getdate()").ValueGeneratedOnAdd();
-            //builder.Property(i => i.Category).IsRequired();
         }
     }
 }

@@ -37,7 +37,7 @@ namespace Diary.ViewModels
         public TodoPageViewModel()
         {
             repository = new TodoRepository();
-            TodoViews = new ObservableCollection<TodoViewModel>(repository.GetListAsync().Result.Select(i => new TodoViewModel(i, this)));
+            TodoViews = new ObservableCollection<TodoViewModel>(repository.GetAllAsync().Result.Select(i => new TodoViewModel(i, this)));
             AddCommand = new Command(async () => await AddTodoAsync());
             SaveCommand = new Command(async (_) => await SaveTodoAsync(_), (_) => !string.IsNullOrEmpty((_ as TodoViewModel)?.Title));
             CancelCommand = new Command(async () => await CancelAsync());

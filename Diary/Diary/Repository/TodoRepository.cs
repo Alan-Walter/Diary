@@ -18,39 +18,39 @@ namespace Diary.Repository
         public async Task CreateAsync(Todo item)
         {
             dbContext.Todos.Add(item);
-            await dbContext.SaveChangesAsync();
+            await dbContext.SaveChangesAsync().ConfigureAwait(false);
         }
 
         public async Task DeleteAsync(int id)
         {
-            var todo = await GetAsync(id);
+            var todo = await GetAsync(id).ConfigureAwait(false);
             if (todo == null) return;
             dbContext.Todos.Remove(todo);
-            await dbContext.SaveChangesAsync();
+            await dbContext.SaveChangesAsync().ConfigureAwait(false);
         }
 
         public async Task DeleteAsync(Todo item)
         {
             dbContext.Todos.Remove(item);
-            await dbContext.SaveChangesAsync();
+            await dbContext.SaveChangesAsync().ConfigureAwait(false);
         }
 
         public async Task<Todo> GetAsync(int id)
         {
-            var todo = await dbContext.Todos.Where(i => i.Id == id).FirstOrDefaultAsync();
+            var todo = await dbContext.Todos.Where(i => i.Id == id).FirstOrDefaultAsync().ConfigureAwait(false);
             return todo;
         }
 
-        public async Task<IEnumerable<Todo>> GetListAsync()
+        public async Task<IEnumerable<Todo>> GetAllAsync()
         {
-            var list = await dbContext.Todos.ToListAsync();
+            var list = await dbContext.Todos.ToListAsync().ConfigureAwait(false);
             return list;
         }
 
         public async Task UpdateAsync(Todo item)
         {
             dbContext.Todos.Update(item);
-            await dbContext.SaveChangesAsync();
+            await dbContext.SaveChangesAsync().ConfigureAwait(false);
         }
     }
 }
