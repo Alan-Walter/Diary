@@ -6,12 +6,12 @@ using Xamarin.Forms.Xaml;
 namespace Diary.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TodoPage : ContentPage
+    public partial class TodosPage : ContentPage
     {
-        public TodoPage()
+        public TodosPage()
         {
             InitializeComponent();
-            BindingContext = new TodoPageViewModel();
+            BindingContext = new TodosViewModel();
         }
     }
 }

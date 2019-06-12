@@ -8,9 +8,9 @@ using Xamarin.Forms.Xaml;
 namespace Diary.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DetailsTodoPage : ContentPage
+    public partial class TodoDetailsPage : ContentPage
     {
-        public DetailsTodoPage(TodoViewModel todoViewModel)
+        public TodoDetailsPage(TodoItemViewModel todoViewModel)
         {
             InitializeComponent();
             this.BindingContext = todoViewModel;

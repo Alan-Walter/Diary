@@ -25,8 +25,7 @@ namespace Diary.Repository
         {
             var todo = await GetAsync(id).ConfigureAwait(false);
             if (todo == null) return;
-            dbContext.Todos.Remove(todo);
-            await dbContext.SaveChangesAsync().ConfigureAwait(false);
+            await DeleteAsync(todo).ConfigureAwait(false);
         }
 
         public async Task DeleteAsync(Todo item)

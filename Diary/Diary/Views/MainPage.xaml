@@ -11,7 +11,7 @@
         <Tab Title="To Do List" 
              Route="todo"
              Icon="@drawable/baseline_assignment_24">
-            <ShellContent ContentTemplate ="{DataTemplate local:TodoPage}" Route="collection"/>
+            <ShellContent ContentTemplate ="{DataTemplate local:TodosPage}" Route="collection"/>
         </Tab>
         
         <Tab Title="Money" 

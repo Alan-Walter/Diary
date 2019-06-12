@@ -9,20 +9,20 @@ using Xamarin.Forms;
 
 namespace Diary.ViewModels
 {
-    public class TodoPageViewModel : SimpleViewModel
+    public class TodosViewModel : SimpleViewModel
     {
         readonly IRepository<Todo> repository;
         bool isBusy = false;
-        TodoViewModel selectedTodo;
+        TodoItemViewModel selectedTodo;
 
-        public IList<TodoViewModel> TodoViews { get; private set; }
+        public IList<TodoItemViewModel> TodoViews { get; private set; }
         public Command AddCommand { get; }
         public Command SaveCommand { get; }
         public Command CancelCommand { get; }
         public Command DeleteCommand { get; }
         public Command SelectCommand { get; }
 
-        public TodoViewModel SelectedTodo
+        public TodoItemViewModel SelectedTodo
         {
             get
             {
@@ -34,12 +34,12 @@ namespace Diary.ViewModels
             }
         }
 
-        public TodoPageViewModel()
+        public TodosViewModel()
         {
             repository = new TodoRepository();
-            TodoViews = new ObservableCollection<TodoViewModel>(repository.GetAllAsync().Result.Select(i => new TodoViewModel(i, this)));
+            TodoViews = new ObservableCollection<TodoItemViewModel>(repository.GetAllAsync().Result.Select(i => new TodoItemViewModel(i, this)));
             AddCommand = new Command(async () => await AddTodoAsync());
-            SaveCommand = new Command(async (_) => await SaveTodoAsync(_), (_) => !string.IsNullOrEmpty((_ as TodoViewModel)?.Title));
+            SaveCommand = new Command(async (_) => await SaveTodoAsync(_), (_) => !string.IsNullOrEmpty((_ as TodoItemViewModel)?.Title));
             CancelCommand = new Command(async () => await CancelAsync());
             DeleteCommand = new Command(async (_) => await DeleteTodoAsync(_));
             SelectCommand = new Command(async () => await Select());
@@ -50,7 +50,7 @@ namespace Diary.ViewModels
         {
             if (isBusy) return;
             isBusy = true;
-            await Shell.Current.Navigation.PushAsync(new DetailsTodoPage(new TodoViewModel(new Models.Todo(), this)));
+            await Shell.Current.Navigation.PushAsync(new TodoDetailsPage(new TodoItemViewModel(new Models.Todo(), this)));
             isBusy = false;
         }
 
@@ -58,7 +58,7 @@ namespace Diary.ViewModels
         {
             if (isBusy) return;
             isBusy = true;
-            var todoViewModel = (obj as TodoViewModel);
+            var todoViewModel = (obj as TodoItemViewModel);
             if (todoViewModel != null)
             {
                 var todo = todoViewModel.Todo;
@@ -71,8 +71,8 @@ namespace Diary.ViewModels
                 else await repository.UpdateAsync(todo);
                 
             }
-            await Shell.Current.Navigation.PopToRootAsync();
-            //await Shell.Current.Navigation.PopAsync();
+            //await Shell.Current.Navigation.PopToRootAsync();
+            await Shell.Current.Navigation.PopAsync();
             isBusy = false;
         }
 
@@ -80,7 +80,7 @@ namespace Diary.ViewModels
         {
             if (isBusy) return;
             isBusy = true;
-            var todoViewModel = (obj as TodoViewModel);
+            var todoViewModel = (obj as TodoItemViewModel);
             if (todoViewModel != null)
             {
                 var todo = todoViewModel.Todo;
@@ -89,8 +89,8 @@ namespace Diary.ViewModels
                     await repository.DeleteAsync(db);
                 TodoViews.Remove(todoViewModel);
             }
-            await Shell.Current.Navigation.PopToRootAsync();
-            //await Shell.Current.Navigation.PopAsync();
+            //await Shell.Current.Navigation.PopToRootAsync();
+            await Shell.Current.Navigation.PopAsync();
             isBusy = false;
         }
 
@@ -98,15 +98,15 @@ namespace Diary.ViewModels
         {
             if (isBusy) return;
             isBusy = true;
-            await Shell.Current.Navigation.PopToRootAsync();
-            //await Shell.Current.Navigation.PopAsync();
+            //await Shell.Current.Navigation.PopToRootAsync();
+            await Shell.Current.Navigation.PopAsync();
             isBusy = false;
         }
 
         private async Task Select()
         {
             if (SelectedTodo == null) return;
-            await Shell.Current.Navigation.PushAsync(new DetailsTodoPage(SelectedTodo));
+            await Shell.Current.Navigation.PushAsync(new TodoDetailsPage(SelectedTodo));
             SelectedTodo = null;
         }
     }

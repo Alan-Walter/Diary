@@ -4,11 +4,11 @@ using Xamarin.Forms;
 
 namespace Diary.ViewModels
 {
-    public class TodoViewModel : SimpleViewModel
+    public class TodoItemViewModel : SimpleViewModel
     {
         public Todo Todo { get; private set; }
 
-        public TodoPageViewModel TodoPageViewModel { get; }
+        public TodosViewModel TodoPageViewModel { get; }
 
         public string Title
         {
@@ -44,7 +44,7 @@ namespace Diary.ViewModels
             }
         }
 
-        public TodoViewModel(Todo todo, TodoPageViewModel todoPageViewModel)
+        public TodoItemViewModel(Todo todo, TodosViewModel todoPageViewModel)
         {
             this.Todo = todo;
             this.TodoPageViewModel = todoPageViewModel;
