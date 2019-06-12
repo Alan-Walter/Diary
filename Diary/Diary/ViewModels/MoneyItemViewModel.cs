@@ -1,7 +1,5 @@
 ﻿using Diary.Models;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Diary.ViewModels
 {
@@ -22,6 +20,17 @@ namespace Diary.ViewModels
             }
         }
 
+        public int Value
+        {
+            get { return Money.Value; }
+            set
+            {
+                if (value == Value) return;
+                Money.Value = value;
+                RaisePropertyChanged();
+            }
+        }
+
         public Category Category
         {
             get { return Money.Category; }
@@ -36,6 +45,12 @@ namespace Diary.ViewModels
         public DateTime Date
         {
             get { return Money.Date; }
+        }
+
+        public MoneyItemViewModel(Money money, MoneyHistoryViewModel moneyHistoryViewModel)
+        {
+            Money = money;
+            MoneyHistoryViewModel = moneyHistoryViewModel;
         }
     }
 }

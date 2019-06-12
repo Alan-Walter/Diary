@@ -1,8 +1,8 @@
 ﻿using Diary.Models;
 using Diary.Repository;
-using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace Diary.ViewModels
 {
@@ -10,5 +10,24 @@ namespace Diary.ViewModels
     {
         readonly IRepository<Money> repository;
 
+        MoneyItemViewModel selectedMoneyItem;
+
+        public IList<MoneyItemViewModel> MoneyItemViewModels { get; private set; }
+
+        public MoneyItemViewModel SelectedMoneyItem
+        {
+            get { return selectedMoneyItem; }
+            set
+            {
+                SetPropertyValue(ref selectedMoneyItem, value);
+            }
+        }
+
+        public MoneyHistoryViewModel()
+        {
+            repository = new MoneyRepository();
+            var moneys = repository.GetAllAsync().Result;
+            MoneyItemViewModels = new ObservableCollection<MoneyItemViewModel>(moneys.Select(i => new MoneyItemViewModel(i, this)));
+        }
     }
 }
