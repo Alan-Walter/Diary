@@ -18,8 +18,13 @@
                         <ColumnDefinition Width="*0.2"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Column="0" Text="{Binding Value}"/>
-                    <Label Grid.Column="1" Text="{Binding Description}"/>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Text="{Binding Value}"/>
+                    <Label Grid.Column="1" Grid.Row="0" Text="{Binding Description}"/>
+                    <Label Grid.Column="1" Grid.Row="1" Text="{Binding Category}"/>
                 </Grid>
             </DataTemplate>
         </CollectionView.ItemTemplate>
