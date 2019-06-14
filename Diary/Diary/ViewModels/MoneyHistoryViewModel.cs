@@ -19,8 +19,7 @@ namespace Diary.ViewModels
         public Command SaveCommand { get; }
         public Command CancelCommand { get; }
         public Command DeleteCommand { get; }
-
-        public Command LoadCommand { get; }
+        public Command SelectCommand { get; }
 
         public List<Category> CategoryList { get; private set; }
 
@@ -39,24 +38,90 @@ namespace Diary.ViewModels
         {
             repository = new MoneyRepository();
             AddCommand = new Command(async _ => await AddAsync());
-            LoadCommand = new Command(async _ => await Load());
+            SaveCommand = new Command(async (_) => await SaveAsync(_));
+            CancelCommand = new Command(async () => await CancelAsync());
+            DeleteCommand = new Command(async (_) => await DeleteAsync(_));
+            SelectCommand = new Command(async () => await SelectAsync());
+        }
+
+        private async Task LoadCategories()
+        {
+            CategoryRepository categoryRepository = new CategoryRepository();
+            var categories = await categoryRepository.GetAllAsync();
+            this.CategoryList = categories.ToList();
         }
 
         private async Task AddAsync()
         {
             if (IsBusy) return;
             IsBusy = true;
-            CategoryRepository categoryRepository = new CategoryRepository();
-            var categories = await categoryRepository.GetAllAsync();
-            this.CategoryList = categories.ToList();
+            await LoadCategories();
             await Shell.Current.Navigation.PushAsync(new MoneyDetailsPage(new MoneyItemViewModel(new Money(), this)));
             IsBusy = false;
         }
 
-        private async Task Load()
+        /// <summary>
+        /// сделать загрузку
+        /// </summary>
+        /// <returns></returns>
+        private async Task LoadAsync()
         {
             var moneys = await repository.GetAllAsync();
             MoneyItemViewModels = new ObservableCollection<MoneyItemViewModel>(moneys.Select(i => new MoneyItemViewModel(i, this)));
+        }
+
+        private async Task SaveAsync(object obj)
+        {
+            if (IsBusy) return;
+            IsBusy = true;
+            var moneyItemViewModel = (obj as MoneyItemViewModel);
+            if (moneyItemViewModel != null)
+            {
+                var money = moneyItemViewModel.Money;
+                var db = await repository.GetAsync(money.Id);
+                if (db == null)
+                {
+                    await repository.CreateAsync(money);
+                    MoneyItemViewModels.Add(moneyItemViewModel);
+                }
+                else await repository.UpdateAsync(money);
+
+            }
+            await Shell.Current.Navigation.PopAsync();
+            IsBusy = false;
+        }
+
+        private async Task DeleteAsync(object obj)
+        {
+            if (IsBusy) return;
+            IsBusy = true;
+            var moneyItemViewModel = (obj as MoneyItemViewModel);
+            if (moneyItemViewModel != null)
+            {
+                var todo = moneyItemViewModel.Money;
+                var db = await repository.GetAsync(todo.Id);
+                if (db != null)
+                    await repository.DeleteAsync(db);
+                MoneyItemViewModels.Remove(moneyItemViewModel);
+            }
+            await Shell.Current.Navigation.PopAsync();
+            IsBusy = false;
+        }
+
+        private async Task CancelAsync()
+        {
+            if (IsBusy) return;
+            IsBusy = true;
+            await Shell.Current.Navigation.PopAsync();
+            IsBusy = false;
+        }
+
+        private async Task SelectAsync()
+        {
+            if (SelectedMoneyItem == null) return;
+            await LoadCategories();
+            await Shell.Current.Navigation.PushAsync(new MoneyDetailsPage(SelectedMoneyItem));
+            SelectedMoneyItem = null;
         }
     }
 }

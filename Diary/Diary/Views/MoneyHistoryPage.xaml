@@ -17,17 +17,17 @@
         <CollectionView.ItemTemplate>
             <DataTemplate>
                 <Grid Padding="10">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*0.2"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Label Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Text="{Binding Value}"/>
-                    <Label Grid.Column="1" Grid.Row="0" Text="{Binding Description}"/>
-                    <Label Grid.Column="1" Grid.Row="1" Text="{Binding Category}"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="8*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0"  Grid.RowSpan="2" Text="{Binding Value}"/>
+                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding Description}"/>
+                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding Category.Title}"/>
                 </Grid>
             </DataTemplate>
         </CollectionView.ItemTemplate>
