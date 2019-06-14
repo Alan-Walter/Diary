@@ -1,41 +1,47 @@
 ﻿using Diary.Models;
-using System;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Diary.Repository
 {
     class CategoryRepository : IRepository<Category>
     {
-        public Task CreateAsync(Category item)
+        public async Task CreateAsync(Category item)
         {
-            throw new NotImplementedException();
+            App.Database.Categories.Add(item);
+            await App.Database.SaveChangesAsync().ConfigureAwait(false);
         }
 
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var cat = await GetAsync(id).ConfigureAwait(false);
+            await DeleteAsync(cat).ConfigureAwait(false);
         }
 
-        public Task DeleteAsync(Category item)
+        public async Task DeleteAsync(Category item)
         {
-            throw new NotImplementedException();
+            App.Database.Categories.Remove(item);
+            await App.Database.SaveChangesAsync().ConfigureAwait(false);
         }
 
-        public Task<IEnumerable<Category>> GetAllAsync()
+        public async Task<IEnumerable<Category>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var res = await App.Database.Categories.ToListAsync().ConfigureAwait(false);
+            return res;
         }
 
-        public Task<Category> GetAsync(int id)
+        public async Task<Category> GetAsync(int id)
         {
-            throw new NotImplementedException();
+            var item = await App.Database.Categories.Where(i => i.Id == id).FirstOrDefaultAsync().ConfigureAwait(false);
+            return item;
         }
 
-        public Task UpdateAsync(Category item)
+        public async Task UpdateAsync(Category item)
         {
-            throw new NotImplementedException();
+            App.Database.Categories.Update(item);
+            await App.Database.SaveChangesAsync().ConfigureAwait(false);
         }
     }
 }

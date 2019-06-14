@@ -8,9 +8,12 @@
              Title="Money History">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Name="AddItem" Order="Primary" Text="Add" Icon="@drawable/baseline_add_24"/>
+        <ToolbarItem Name="AddItem" Order="Primary" Text="Add" Icon="@drawable/baseline_add_24" Command="{Binding AddCommand}"/>
     </ContentPage.ToolbarItems>
-    <CollectionView ItemsSource="{Binding MoneyItemViewModels}" EmptyView="History is empty" SelectedItem="{Binding SelectedMoneyItem, Mode=TwoWay}" SelectionMode="Single" SelectionChangedCommand="{Binding SelectCommand}">
+    <CollectionView ItemsSource="{Binding MoneyItemViewModels}" 
+                    EmptyView="History is empty" 
+                    SelectedItem="{Binding SelectedMoneyItem, Mode=TwoWay}"
+                    SelectionMode="Single" SelectionChangedCommand="{Binding SelectCommand}">
         <CollectionView.ItemTemplate>
             <DataTemplate>
                 <Grid Padding="10">

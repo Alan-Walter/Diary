@@ -8,6 +8,17 @@ namespace Diary.ViewModels
 {
     public class SimpleViewModel : INotifyPropertyChanged
     {
+        private bool isBusy;
+
+        public bool IsBusy
+        {
+            get { return isBusy; }
+            set
+            {
+                SetPropertyValue(ref isBusy, value);
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
 
         protected void RaiseAllPropertiesChanged()

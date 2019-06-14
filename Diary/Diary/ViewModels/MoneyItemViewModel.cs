@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Diary.ViewModels
 {
-    class MoneyItemViewModel : SimpleViewModel
+    public class MoneyItemViewModel : SimpleViewModel
     {
         public Money Money { get; private set; }
 
@@ -23,7 +23,7 @@ namespace Diary.ViewModels
             }
         }
 
-        public int Value
+        public double Value
         {
             get { return Money.Value; }
             set

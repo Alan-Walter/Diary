@@ -10,7 +10,9 @@
             <StackLayout VerticalOptions="CenterAndExpand" Spacing="20">
                 <Entry Text="{Binding Value}" Placeholder="Value" Keyboard="Numeric" />
                 <Entry Text="{Binding Description}" Placeholder="Description" />
-                <Picker Title="Category" ItemsSource="{Binding MoneyHistoryViewModel.CategoryList}" SelectedItem="{Binding Category, Mode=TwoWay}"/>
+                <Picker Title="Category" ItemsSource="{Binding MoneyHistoryViewModel.CategoryList}" 
+                        SelectedItem="{Binding Category, Mode=TwoWay}" 
+                        ItemDisplayBinding="{Binding Title}"/>
             </StackLayout>
 
             <StackLayout VerticalOptions="EndAndExpand" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">

@@ -11,6 +11,11 @@ namespace Diary.Models
         public string Title { get; set; }
 
         public List<Money> Moneys { get; set; }
+
+        public override string ToString()
+        {
+            return Title;
+        }
     }
 
     public class CategoryConfiguration : IEntityTypeConfiguration<Category>

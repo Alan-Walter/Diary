@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Diary.Repository;
+using Diary.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +14,10 @@ namespace Diary.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MoneyDetailsPage : ContentPage
     {
-        public MoneyDetailsPage()
+        public MoneyDetailsPage(MoneyItemViewModel moneyItemViewModel)
         {
             InitializeComponent();
+            this.BindingContext = moneyItemViewModel;
         }
     }
 }
