@@ -6,10 +6,19 @@
              mc:Ignorable="d"
              x:Class="Diary.Views.MoneyDetailsPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Margin="20">
+            <StackLayout VerticalOptions="CenterAndExpand" Spacing="20">
+                <Entry Text="{Binding Value}" Placeholder="Value" Keyboard="Numeric" />
+                <Entry Text="{Binding Description}" Placeholder="Description" />
+                <Picker Title="Category" ItemsSource="{Binding MoneyHistoryViewModel.CategoryList}" SelectedItem="{Binding Category, Mode=TwoWay}"/>
+            </StackLayout>
+
+            <StackLayout VerticalOptions="EndAndExpand" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Button Text="Cancel" Command="{Binding MoneyHistoryViewModel.CancelCommand}" />
+                <Button Text="Delete" Command="{Binding MoneyHistoryViewModel.DeleteCommand}" CommandParameter="{Binding}"/>
+                <Button Text="Save" Command="{Binding MoneyHistoryViewModel.SaveCommand}" CommandParameter="{Binding}"/>
+            </StackLayout>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
