@@ -11,14 +11,13 @@
         <Tab Title="To Do List" 
              Route="todo"
              Icon="@drawable/baseline_assignment_24">
-            <ShellContent ContentTemplate ="{DataTemplate local:TodosPage}" Route="collection"/>
+            <ShellContent ContentTemplate ="{DataTemplate local:TodosPage}"/>
         </Tab>
         
         <Tab Title="Money" 
              Route="money"
              Icon="@drawable/baseline_attach_money_24">
-            <ShellContent ContentTemplate ="{DataTemplate local:MoneyStatsPage}" Title="Stats" Route="stats"/>
-            <ShellContent ContentTemplate ="{DataTemplate local:MoneyHistoryPage}" Title="History" Route="history"/>
+            <ShellContent ContentTemplate ="{DataTemplate local:MoneyPage}" Title="Money"/>
         </Tab>
         
     </TabBar>

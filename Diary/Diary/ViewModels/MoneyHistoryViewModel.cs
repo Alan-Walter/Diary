@@ -57,7 +57,7 @@ namespace Diary.ViewModels
             if (IsBusy) return;
             IsBusy = true;
             await LoadCategories();
-            await Shell.Current.Navigation.PushAsync(new MoneyDetailsPage(new MoneyItemViewModel(new Money(), this)));
+            //await Shell.Current.Navigation.PushAsync(new MoneyDetailsPage(new MoneyItemViewModel(new Money(), this)));
             IsBusy = false;
         }
 
@@ -68,7 +68,7 @@ namespace Diary.ViewModels
         private async Task LoadAsync()
         {
             var moneys = await repository.GetAllAsync();
-            MoneyItemViewModels = new ObservableCollection<MoneyItemViewModel>(moneys.Select(i => new MoneyItemViewModel(i, this)));
+            //MoneyItemViewModels = new ObservableCollection<MoneyItemViewModel>(moneys.Select(i => new MoneyItemViewModel(i, this)));
         }
 
         private async Task SaveAsync(object obj)

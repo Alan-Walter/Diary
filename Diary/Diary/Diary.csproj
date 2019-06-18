@@ -20,8 +20,8 @@
     <Compile Update="Views\TodoDetailsPage.xaml.cs">
       <DependentUpon>TodoDetailsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\MoneyStatsPage.xaml.cs">
-      <DependentUpon>MoneyStatsPage.xaml</DependentUpon>
+    <Compile Update="Views\MoneyPage.xaml.cs">
+      <DependentUpon>MoneyPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\TodosPage.xaml.cs">
       <DependentUpon>TodosPage.xaml</DependentUpon>
@@ -38,7 +38,7 @@
     <EmbeddedResource Update="Views\MoneyHistoryPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\MoneyStatsPage.xaml">
+    <EmbeddedResource Update="Views\MoneyPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\TodosPage.xaml">

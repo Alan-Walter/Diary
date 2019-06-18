@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+        xmlns="http://xamarin.com/schemas/2014/forms"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        x:Class="Diary.Views.MoneyPage"
+        Title="Money">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Show History" Order="Primary" Text="History" Command="{Binding ShowHistoryCommand}"/>
+        <ToolbarItem Name="AddCategory" Order="Secondary" Text="Add Category" Command="{Binding AddCategoryCommand}"/>
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+
+        <StackLayout Margin="20">
+            <Frame>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Balance: "/>
+                            <Span Text="{Binding Balance}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </Frame>
+            <Frame>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Income: "/>
+                            <Span Text="{Binding Income}"/>
+                            <Span Text="Expense: "/>
+                            <Span Text="{Binding Expense}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </Frame>
+
+
+
+            <StackLayout VerticalOptions="EndAndExpand" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Button Text="Add" Command="{Binding AddMoneyCommand}"/>
+            </StackLayout>
+
+        </StackLayout>
+
+    </ContentPage.Content>
+
+
+</ContentPage>

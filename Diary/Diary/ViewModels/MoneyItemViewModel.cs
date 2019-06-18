@@ -1,8 +1,5 @@
 ﻿using Diary.Models;
-using Diary.Repository;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Diary.ViewModels
 {
@@ -10,7 +7,7 @@ namespace Diary.ViewModels
     {
         public Money Money { get; private set; }
 
-        public MoneyHistoryViewModel MoneyHistoryViewModel { get; }
+        public MoneyViewModel MoneyViewModel { get; }
 
         public string Description
         {
@@ -50,10 +47,10 @@ namespace Diary.ViewModels
             get { return Money.Date; }
         }
 
-        public MoneyItemViewModel(Money money, MoneyHistoryViewModel moneyHistoryViewModel)
+        public MoneyItemViewModel(Money money, MoneyViewModel moneyViewModel)
         {
             Money = money;
-            MoneyHistoryViewModel = moneyHistoryViewModel;
+            MoneyViewModel = moneyViewModel;
         }
     }
 }
