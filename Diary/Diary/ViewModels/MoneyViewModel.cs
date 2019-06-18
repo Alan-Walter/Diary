@@ -56,6 +56,7 @@ namespace Diary.ViewModels
         {
             categoryRepository = new CategoryRepository();
             moneyRepository = new MoneyRepository();
+            IsBusy = true;
         }
 
         public async Task LoadDataAsync()
@@ -65,6 +66,7 @@ namespace Diary.ViewModels
             MoneyItemViewModels = new ObservableCollection<MoneyItemViewModel>(moneys.Select(i => new MoneyItemViewModel(i, this)));
             var categories = await categoryRepository.GetAllAsync();
             CategoryList = categories.ToList();
+            IsBusy = false;
         }
 
     }

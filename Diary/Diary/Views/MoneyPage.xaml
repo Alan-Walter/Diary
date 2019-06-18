@@ -14,27 +14,23 @@
 
         <StackLayout Margin="20">
             <Frame>
-                <Label>
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="Balance: "/>
-                            <Span Text="{Binding Balance}"/>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
+                <Label Text="{Binding Balance, StringFormat='Balance: {0}'}"/>
             </Frame>
             <Frame>
                 <Label>
                     <Label.FormattedText>
                         <FormattedString>
                             <Span Text="Income: "/>
-                            <Span Text="{Binding Income}"/>
-                            <Span Text="Expense: "/>
-                            <Span Text="{Binding Expense}"/>
+                            <Span Text="{Binding Income}" TextColor="Green"/>
+                            <Span Text="&#x0a;Expense: "/>
+                            <Span Text="{Binding Expense}" TextColor="Red"/>
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
             </Frame>
+
+            <ActivityIndicator IsRunning="{Binding IsBusy}"
+                                VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
 
 
 
