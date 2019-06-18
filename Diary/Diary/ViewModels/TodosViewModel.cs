@@ -11,7 +11,7 @@ namespace Diary.ViewModels
 {
     public class TodosViewModel : SimpleViewModel
     {
-        readonly IRepository<Todo> repository;
+        IRepository<Todo> repository;
         bool isBusy = false;
         TodoItemViewModel selectedTodo;
 
@@ -36,14 +36,20 @@ namespace Diary.ViewModels
 
         public TodosViewModel()
         {
-            repository = new TodoRepository();
-            TodoViews = new ObservableCollection<TodoItemViewModel>(repository.GetAllAsync().Result.Select(i => new TodoItemViewModel(i, this)));
             AddCommand = new Command(async () => await AddTodoAsync());
             SaveCommand = new Command(async (_) => await SaveTodoAsync(_), (_) => !string.IsNullOrEmpty((_ as TodoItemViewModel)?.Title));
             CancelCommand = new Command(async () => await CancelAsync());
             DeleteCommand = new Command(async (_) => await DeleteTodoAsync(_));
             SelectCommand = new Command(async () => await Select());
             //  https://metanit.com/sharp/xamarin/11.1.php
+        }
+
+        public async Task LoadAsync()
+        {
+            if (repository != null) return;
+            repository = new TodoRepository();
+            var todos = await repository.GetAllAsync();
+            TodoViews = new ObservableCollection<TodoItemViewModel>(todos.Select(i => new TodoItemViewModel(i, this)));
         }
 
         private async Task AddTodoAsync()

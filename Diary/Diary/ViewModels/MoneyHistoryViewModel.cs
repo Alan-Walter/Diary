@@ -42,6 +42,7 @@ namespace Diary.ViewModels
             CancelCommand = new Command(async () => await CancelAsync());
             DeleteCommand = new Command(async (_) => await DeleteAsync(_));
             SelectCommand = new Command(async () => await SelectAsync());
+            LoadAsync().Wait();
         }
 
         private async Task LoadCategories()
