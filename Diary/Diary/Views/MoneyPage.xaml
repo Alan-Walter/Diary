@@ -13,58 +13,81 @@
 
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="History" Command="{Binding HistoryCommand}"/>
         <ToolbarItem Text="Categories" Command="{Binding CategoriesCommand}"/>
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
+        <AbsoluteLayout>
 
-        <StackLayout Margin="20">
-            <Frame>
-                <Label>
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="Balance: "/>
-                            <Span Text="{Binding Balance}" TextColor="{Binding Balance, Converter={StaticResource doubleToColor}}" FontAttributes="Bold"/>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-            </Frame>
-            <Frame>
-                <Label>
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="Current month:&#x0a;" TextDecorations="Underline"/>
-                            <Span Text="Income: "/>
-                            <Span Text="{Binding Income}" TextColor="Green"/>
-                            <Span Text="&#x0a;Expense: "/>
-                            <Span Text="{Binding Expense}" TextColor="Red"/>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-            </Frame>
-            <Frame>
-                <Label>
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="Avg per month:&#x0a;" TextDecorations="Underline"/>
-                            <Span Text="Income: "/>
-                            <Span Text="{Binding AverageIncome}" TextColor="Green"/>
-                            <Span Text="&#x0a;Expense: "/>
-                            <Span Text="{Binding AverageExpense}" TextColor="Red"/>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-            </Frame>
+            <StackLayout>
+                <Frame HasShadow="True">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Balance&#x0a;" FontSize="Medium"/>
+                                    <Span Text="{Binding Balance}" TextColor="{Binding Balance, Converter={StaticResource doubleToColor}}" FontAttributes="Bold" FontSize="Large"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="Current month" FontSize="Medium" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                        <Label Grid.Row="2" Grid.Column="0" Text="{Binding Expense}" TextColor="Red" FontSize="Medium" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding Income}" TextColor="Green" FontSize="Medium" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                        <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="Avg per month" FontSize="Medium" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                        <Label Grid.Row="4" Grid.Column="0" Text="{Binding AverageExpense}" TextColor="Red" FontSize="Medium" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                        <Label Grid.Row="4" Grid.Column="1" Text="{Binding AverageIncome}" TextColor="Green" FontSize="Medium" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                    </Grid>
+                </Frame>
 
+                <CollectionView ItemsSource="{Binding MoneyItemViewModels}"
+                        EmptyView="History is empty" 
+                        SelectedItem="{Binding SelectedMoneyItem, Mode=TwoWay}"
+                        SelectionMode="Single" SelectionChangedCommand="{Binding SelectCommand}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame>
+                                <Grid Padding="10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="8*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Row="0" Grid.Column="0"  Grid.RowSpan="2" Text="{Binding Value}"/>
+                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding Description}"/>
+                                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding Category.Title}"/>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </StackLayout>
             <ActivityIndicator IsRunning="{Binding IsBusy}"
-                                VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
-
-
-
-            <Button VerticalOptions="EndAndExpand" Text="Add" HorizontalOptions="CenterAndExpand" Command="{Binding AddMoneyCommand}"/>
-
-        </StackLayout>
+                               IsVisible="{Binding IsBusy}"
+                               AbsoluteLayout.LayoutBounds=".5,.5,-1,-1" 
+                               AbsoluteLayout.LayoutFlags="PositionProportional"/>
+            <ImageButton Margin="10"
+                         CornerRadius="45"
+                         BackgroundColor="#2296F3"
+                         Source="baseline_add_white_24"
+                         AbsoluteLayout.LayoutBounds="1,1,75,75"
+                        AbsoluteLayout.LayoutFlags="PositionProportional" 
+                        Command="{Binding AddMoneyCommand}"/>
+        </AbsoluteLayout>
 
     </ContentPage.Content>
 
