@@ -42,10 +42,7 @@ namespace Diary.ViewModels
             }
         }
 
-        public DateTime Date
-        {
-            get { return Money.Date; }
-        }
+        public DateTime Date => Money.Date;
 
         public MoneyItemViewModel(Money money, MoneyViewModel moneyViewModel)
         {

@@ -32,7 +32,8 @@ namespace Diary.Models
                 new Category() { Id = 5, Title = "Clothes" },
                 new Category() { Id = 6, Title = "Communications" },
                 new Category() { Id = 7, Title = "Health" },
-                new Category() { Id = 8, Title = "Sports" }
+                new Category() { Id = 8, Title = "Sports" },
+                new Category() { Id = 9, Title = "PayDay"}
             );
         }
     }

@@ -16,9 +16,9 @@
             </StackLayout>
 
             <StackLayout VerticalOptions="EndAndExpand" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                <Button Text="Cancel" Command="{Binding MoneyViewModel.CancelCommand}" />
-                <Button Text="Delete" Command="{Binding MoneyViewModel.DeleteCommand}" CommandParameter="{Binding}"/>
-                <Button Text="Save" Command="{Binding MoneyViewModel.SaveCommand}" CommandParameter="{Binding}"/>
+                <!--<Button Text="Cancel" Command="{Binding MoneyViewModel.CancelCommand}" />
+                <Button Text="Delete" Command="{Binding MoneyViewModel.DeleteCommand}" CommandParameter="{Binding}"/>-->
+                <Button Text="Save" Command="{Binding MoneyViewModel.SaveMoneyCommand}" CommandParameter="{Binding}"/>
             </StackLayout>
 
         </StackLayout>
