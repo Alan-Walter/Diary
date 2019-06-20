@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="Diary.Views.MoneyDetailsPage">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Delete" Command="{Binding MoneyViewModel.DeleteCommand}" CommandParameter="{Binding}"/>
+        <ToolbarItem Text="Delete" IconImageSource="baseline_delete_forever_white_24" Command="{Binding MoneyViewModel.DeleteMoneyCommand}" CommandParameter="{Binding}"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <AbsoluteLayout Margin="20">
@@ -25,8 +25,7 @@
                                         ItemsSource="{Binding MoneyViewModel.CategoryList}" 
                                         SelectedItem="{Binding Category, Mode=TwoWay}" 
                                         ItemDisplayBinding="{Binding Title}" 
-                                        HorizontalOptions="FillAndExpand"
-                                        />
+                                        HorizontalOptions="FillAndExpand"/>
                             </StackLayout>
                         </ViewCell>
                         
@@ -38,11 +37,11 @@
             <ImageButton Margin="10"
                          CornerRadius="45"
                          BackgroundColor="#2296F3"
-                         Source="baseline_add_white_24"
+                         Source="baseline_done_white_24"
                          AbsoluteLayout.LayoutBounds="1,1,75,75"
                          AbsoluteLayout.LayoutFlags="PositionProportional"
                          Padding="12"
-                         Command="{Binding Binding MoneyViewModel.SaveMoneyCommand}" CommandParameter="{Binding}"/>
+                         Command="{Binding MoneyViewModel.SaveMoneyCommand}" CommandParameter="{Binding}"/>
         </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

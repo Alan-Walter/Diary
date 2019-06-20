@@ -28,6 +28,7 @@ namespace Diary.ViewModels
                 if (value == Value) return;
                 Money.Value = value;
                 RaisePropertyChanged();
+                MoneyViewModel.SaveMoneyCommand.ChangeCanExecute();
             }
         }
 

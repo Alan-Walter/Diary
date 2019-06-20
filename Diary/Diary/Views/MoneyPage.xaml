@@ -8,7 +8,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converter:DoubleToColorConverter x:Key="doubleToColor" />
-            <Style TargetType="Label">
+            <Style x:Key="statsLabels" TargetType="Label">
                 <Setter Property="HorizontalTextAlignment" Value="Center" />
                 <Setter Property="VerticalTextAlignment" Value="Center" />
             </Style>
@@ -36,16 +36,16 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Row="0" Grid.Column="0" Text="Current month"/>
-                        <Label Grid.Row="0" Grid.Column="1" Text="Balance"/>
-                        <Label Grid.Row="0" Grid.Column="2" Text="Avg per month"/>
+                        <Label Style="{StaticResource statsLabels}" Grid.Row="0" Grid.Column="0" Text="Current month"/>
+                        <Label Style="{StaticResource statsLabels}" Grid.Row="0" Grid.Column="1" Text="Balance"/>
+                        <Label Style="{StaticResource statsLabels}" Grid.Row="0" Grid.Column="2" Text="Avg per month"/>
 
-                        <Label Grid.Row="1" Grid.Column="0" Text="{Binding Income}" TextColor="Green"/>
-                        <Label Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" Text="{Binding Balance}" TextColor="{Binding Balance, Converter={StaticResource doubleToColor}}" FontAttributes="Bold" FontSize="Large"/>
-                        <Label Grid.Row="1" Grid.Column="2" Text="{Binding AverageIncome}" TextColor="Green" />
+                        <Label Style="{StaticResource statsLabels}" Grid.Row="1" Grid.Column="0" Text="{Binding Income}" TextColor="Green"/>
+                        <Label Style="{StaticResource statsLabels}" Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" Text="{Binding Balance}" TextColor="{Binding Balance, Converter={StaticResource doubleToColor}}" FontAttributes="Bold" FontSize="Large"/>
+                        <Label Style="{StaticResource statsLabels}" Grid.Row="1" Grid.Column="2" Text="{Binding AverageIncome}" TextColor="Green" />
 
-                        <Label Grid.Row="2" Grid.Column="0" Text="{Binding Expense}" TextColor="Red"/>
-                        <Label Grid.Row="2" Grid.Column="2" Text="{Binding AverageExpense}" TextColor="Red" />
+                        <Label Style="{StaticResource statsLabels}" Grid.Row="2" Grid.Column="0" Text="{Binding Expense}" TextColor="Red"/>
+                        <Label Style="{StaticResource statsLabels}" Grid.Row="2" Grid.Column="2" Text="{Binding AverageExpense}" TextColor="Red" />
                         
                     </Grid>
                 </Frame>
@@ -53,24 +53,21 @@
                 <CollectionView ItemsSource="{Binding MoneyItemViewModels}"
                         EmptyView="History is empty" 
                         SelectedItem="{Binding SelectedMoneyItem, Mode=TwoWay}"
-                        SelectionMode="Single" SelectionChangedCommand="{Binding SelectCommand}">
+                        SelectionMode="Single" SelectionChangedCommand="{Binding SelectMoneyCommand}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Frame HasShadow="True">
-                                <Grid Padding="10">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition/>
-                                        <RowDefinition/>
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="2*"/>
-                                        <ColumnDefinition Width="8*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Label Grid.Row="0" Grid.Column="0"  Grid.RowSpan="2" Text="{Binding Value}"/>
-                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding Description}"/>
-                                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding Category.Title}"/>
-                                </Grid>
-                            </Frame>
+                            <Grid Padding="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="8*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="{Binding Value}" TextColor="{Binding Value,Converter={StaticResource doubleToColor}}" FontSize="Large" Style="{StaticResource statsLabels}"/>
+                                <StackLayout Grid.Column="1" HorizontalOptions="StartAndExpand">
+                                    <Label Text="{Binding Date}" TextDecorations="Underline"/>
+                                    <Label Text="{Binding Category.Title}"/>
+                                    <Label Text="{Binding Description}"/>
+                                </StackLayout>
+                            </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>

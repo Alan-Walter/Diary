@@ -22,7 +22,7 @@ namespace Diary.Models
         public void Configure(EntityTypeBuilder<Money> builder)
         {
             builder.HasKey(i => i.Id);
-            builder.Property(i => i.Date).HasDefaultValue(DateTime.Now).ValueGeneratedOnAdd();
+            builder.Property(i => i.Date).HasDefaultValueSql("datetime('now')").ValueGeneratedOnAdd();
         }
     }
 }
