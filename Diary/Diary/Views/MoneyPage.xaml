@@ -8,6 +8,10 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converter:DoubleToColorConverter x:Key="doubleToColor" />
+            <Style TargetType="Label">
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -32,7 +36,7 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Row="0" Grid.Column="0" Text="Current month" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                        <Label Grid.Row="0" Grid.Column="0" Text="Current month"/>
                         <Label Grid.Row="0" Grid.Column="1" Text="Balance"/>
                         <Label Grid.Row="0" Grid.Column="2" Text="Avg per month"/>
 
@@ -52,7 +56,7 @@
                         SelectionMode="Single" SelectionChangedCommand="{Binding SelectCommand}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Frame>
+                            <Frame HasShadow="True">
                                 <Grid Padding="10">
                                     <Grid.RowDefinitions>
                                         <RowDefinition/>
@@ -81,8 +85,9 @@
                          BackgroundColor="#2296F3"
                          Source="baseline_add_white_24"
                          AbsoluteLayout.LayoutBounds="1,1,75,75"
-                        AbsoluteLayout.LayoutFlags="PositionProportional" 
-                        Command="{Binding AddMoneyCommand}"/>
+                         AbsoluteLayout.LayoutFlags="PositionProportional"
+                         Padding="12"
+                         Command="{Binding AddMoneyCommand}"/>
         </AbsoluteLayout>
 
     </ContentPage.Content>
