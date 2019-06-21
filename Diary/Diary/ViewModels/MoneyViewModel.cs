@@ -17,7 +17,6 @@ namespace Diary.ViewModels
 
         #region Repository
 
-        readonly CategoryRepository categoryRepository;
         readonly MoneyRepository moneyRepository;
 
         #endregion
@@ -76,7 +75,6 @@ namespace Diary.ViewModels
 
         #region Commands
 
-        public Command CategoriesCommand { get; }
         public Command AddMoneyCommand { get; }
         public Command SaveMoneyCommand { get; }
         public Command DeleteMoneyCommand { get; }
@@ -86,7 +84,6 @@ namespace Diary.ViewModels
 
         public MoneyViewModel()
         {
-            categoryRepository = new CategoryRepository();
             moneyRepository = new MoneyRepository();
 
             AddMoneyCommand = new Command(async _ => await AddMoneyAsync());
@@ -98,6 +95,7 @@ namespace Diary.ViewModels
         public async Task LoadDataAsync()
         {
             if (moneyItemViewModels != null) return;
+            CategoryRepository categoryRepository = new CategoryRepository();
             IsBusy = true;
             var moneys = await moneyRepository.GetAllAsync();
             MoneyItemViewModels = new ObservableCollection<MoneyItemViewModel>(moneys.OrderByDescending(y => y.Date)

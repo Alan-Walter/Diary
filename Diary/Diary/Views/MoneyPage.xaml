@@ -14,12 +14,7 @@
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
-
-
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Categories" Command="{Binding CategoriesCommand}"/>
-    </ContentPage.ToolbarItems>
-    
+   
     <ContentPage.Content>
         <AbsoluteLayout>
 
