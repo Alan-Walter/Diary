@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using Diary.ViewModels;
+using System.ComponentModel;
 using Xamarin.Forms;
 
 namespace Diary.Views
@@ -8,16 +9,16 @@ namespace Diary.Views
     [DesignTimeVisible(true)]
     public partial class MainPage : Shell
     {
+        readonly MoneyViewModel moneyViewModel;
         public MainPage()
         {
             InitializeComponent();
-            //RegisterRoutes();
+            BindingContext = moneyViewModel = new MoneyViewModel();
         }
 
-        //private void RegisterRoutes()
-        //{
-        //    //  https://docs.microsoft.com/ru-ru/xamarin/xamarin-forms/app-fundamentals/shell/navigation
-        //    Routing.RegisterRoute("//todo/details", typeof(DetailsTodoPage));
-        //}
+        protected override async void OnAppearing()
+        {
+            await moneyViewModel.LoadDataAsync();
+        }
     }
 }

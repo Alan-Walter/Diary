@@ -8,7 +8,7 @@ namespace Diary.Models
     {
         public int Id { get; set; }
 
-        public int Value { get; set; }
+        public double Value { get; set; }
 
         public string Description { get; set; }
 
@@ -22,7 +22,7 @@ namespace Diary.Models
         public void Configure(EntityTypeBuilder<Money> builder)
         {
             builder.HasKey(i => i.Id);
-            builder.Property(i => i.Date).HasDefaultValueSql("getdate()").ValueGeneratedOnAdd();
+            builder.Property(i => i.Date).HasDefaultValueSql("datetime('now')").ValueGeneratedOnAdd();
         }
     }
 }

@@ -11,6 +11,11 @@ namespace Diary.Models
         public string Title { get; set; }
 
         public List<Money> Moneys { get; set; }
+
+        public override string ToString()
+        {
+            return Title;
+        }
     }
 
     public class CategoryConfiguration : IEntityTypeConfiguration<Category>
@@ -20,9 +25,15 @@ namespace Diary.Models
             builder.HasKey(i => i.Id);
             builder.Property(i => i.Title).IsRequired(true);
             builder.HasData(
-                new Category() { Id = 1, Title= "Public Transport" },
+                new Category() { Id = 1, Title = "Transport" },
                 new Category() { Id = 2, Title = "Food" },
-                new Category() { Id = 3, Title = "Games"}
+                new Category() { Id = 3, Title = "Games"},
+                new Category() { Id = 4, Title = "House" },
+                new Category() { Id = 5, Title = "Clothes" },
+                new Category() { Id = 6, Title = "Communications" },
+                new Category() { Id = 7, Title = "Health" },
+                new Category() { Id = 8, Title = "Sports" },
+                new Category() { Id = 9, Title = "PayDay"}
             );
         }
     }

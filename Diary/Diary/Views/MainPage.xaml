@@ -10,15 +10,19 @@
         
         <Tab Title="To Do List" 
              Route="todo"
-             Icon="@drawable/baseline_assignment_24">
-            <ShellContent ContentTemplate ="{DataTemplate local:TodoPage}" Route="collection"/>
+             Icon="baseline_assignment_black_24">
+            <ShellContent ContentTemplate ="{DataTemplate local:TodosPage}"/>
         </Tab>
         
         <Tab Title="Money" 
              Route="money"
-             Icon="@drawable/baseline_attach_money_24">
-            <ShellContent ContentTemplate ="{DataTemplate local:MoneyStatsPage}" Title="Stats"/>
-            <ShellContent ContentTemplate ="{DataTemplate local:MoneyHistoryPage}" Title="History"/>
+             Icon="baseline_attach_money_black_24">
+            <ShellContent ContentTemplate ="{DataTemplate local:MoneyPage}" Title="Money"/>
+        </Tab>
+        <Tab Title="Settings" 
+             Route="settings"
+             Icon="baseline_settings_black_24">
+            <ShellContent ContentTemplate ="{DataTemplate local:SettingsPage}" Title="Settings"/>
         </Tab>
         
     </TabBar>

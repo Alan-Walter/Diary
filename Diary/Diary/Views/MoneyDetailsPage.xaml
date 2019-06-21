@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Diary.Views.MoneyDetailsPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Delete" IconImageSource="baseline_delete_forever_white_24" Command="{Binding MoneyViewModel.DeleteMoneyCommand}" CommandParameter="{Binding}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <AbsoluteLayout Margin="20">
+            <TableView Intent="Form" HasUnevenRows="true">
+                <TableRoot>
+                    <TableSection Title="Money data">
+                        <EntryCell Placeholder="Input Money Value" 
+                                   Keyboard="Numeric"
+                                   Text="{Binding Value}"/>
+                        <EntryCell Placeholder="Input Description"
+                                   Text="{Binding Description}"/>
+                        <ViewCell>
+                            <StackLayout Padding="15" VerticalOptions="CenterAndExpand">
+                                <Label Text="Category"/>
+                                <Picker Title="Category" 
+                                        ItemsSource="{Binding MoneyViewModel.CategoryList}" 
+                                        SelectedItem="{Binding Category, Mode=TwoWay}" 
+                                        ItemDisplayBinding="{Binding Title}" 
+                                        HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+                        </ViewCell>
+                        
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+
+
+            <ImageButton Margin="10"
+                         CornerRadius="45"
+                         BackgroundColor="#2296F3"
+                         Source="baseline_done_white_24"
+                         AbsoluteLayout.LayoutBounds="1,1,75,75"
+                         AbsoluteLayout.LayoutFlags="PositionProportional"
+                         Padding="12"
+                         Command="{Binding MoneyViewModel.SaveMoneyCommand}" CommandParameter="{Binding}"/>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

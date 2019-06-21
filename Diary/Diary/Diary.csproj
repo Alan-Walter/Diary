@@ -12,39 +12,41 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.2.4" />
-    <PackageReference Include="Xamarin.Forms" Version="4.0.0.471375" />
+    <PackageReference Include="Xamarin.Forms" Version="4.0.0.497661" />
     <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\DetailsTodoPage.xaml.cs">
-      <DependentUpon>DetailsTodoPage.xaml</DependentUpon>
+    <Compile Update="Views\TodoDetailsPage.xaml.cs">
+      <DependentUpon>TodoDetailsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\MoneyStatsPage.xaml.cs">
-      <DependentUpon>MoneyStatsPage.xaml</DependentUpon>
+    <Compile Update="Views\MoneyPage.xaml.cs">
+      <DependentUpon>MoneyPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\TodoPage.xaml.cs">
-      <DependentUpon>TodoPage.xaml</DependentUpon>
+    <Compile Update="Views\TodosPage.xaml.cs">
+      <DependentUpon>TodosPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\DetailsTodoPage.xaml">
+    <EmbeddedResource Update="Views\MoneyDetailsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\MoneyHistoryPage.xaml">
+    <EmbeddedResource Update="Views\SettingsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\MoneyStatsPage.xaml">
+    <EmbeddedResource Update="Views\TodoDetailsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\TodoPage.xaml">
+    <EmbeddedResource Update="Views\MoneyPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\TodosPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Converters\" />
     <Folder Include="Services\" />
   </ItemGroup>
 </Project>

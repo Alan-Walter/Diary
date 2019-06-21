@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Diary.Views.TodoDetailsPage"
+             Title="Todo">
+    <ContentPage.Content>
+        <StackLayout Margin="20">
+            <StackLayout VerticalOptions="CenterAndExpand" Spacing="20">
+                <Entry Text="{Binding Title}" Placeholder="Title" />
+                <Entry Text="{Binding Notes}" Placeholder="Notes" />
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Completed"/>
+                    <Switch IsToggled="{Binding Completed}" />
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout VerticalOptions="EndAndExpand" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Button Text="Cancel" Command="{Binding TodoPageViewModel.CancelCommand}" />
+                <Button Text="Delete" Command="{Binding TodoPageViewModel.DeleteCommand}" CommandParameter="{Binding}"/>
+                <Button Text="Save" Command="{Binding TodoPageViewModel.SaveCommand}" CommandParameter="{Binding}"/>
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
