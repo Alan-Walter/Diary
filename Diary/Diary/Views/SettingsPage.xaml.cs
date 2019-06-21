@@ -6,12 +6,12 @@ using Xamarin.Forms.Xaml;
 namespace Diary.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MoneyDetailsPage : ContentPage
+    public partial class SettingsPage : ContentPage
     {
-        public MoneyDetailsPage(MoneyItemViewModel moneyItemViewModel)
+        public SettingsPage()
         {
             InitializeComponent();
-            this.BindingContext = moneyItemViewModel;
+            BindingContext = new SettingsViewModel();
         }
     }
 }

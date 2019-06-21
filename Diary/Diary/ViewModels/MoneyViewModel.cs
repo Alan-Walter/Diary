@@ -141,6 +141,8 @@ namespace Diary.ViewModels
         private async Task DeleteMoneyAsync(object obj)
         {
             if (IsBusy) return;
+            bool res = await Shell.Current.DisplayAlert("Confirm action", "Delete this item ?", "Yes", "No");
+            if (!res) return;
             IsBusy = true;
             var moneyItemViewModel = (obj as MoneyItemViewModel);
             if (moneyItemViewModel != null)

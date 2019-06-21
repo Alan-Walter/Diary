@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Diary.Views.CategoriesPage">
+    <ContentPage.Content>
+        <AbsoluteLayout Margin="20">
+            <StackLayout>
+                <CollectionView ItemsSource="{Binding MoneyItemViewModels}"
+                        EmptyView="History is empty" 
+                        SelectedItem="{Binding SelectedMoneyItem, Mode=TwoWay}"
+                        SelectionMode="Single" SelectionChangedCommand="{Binding SelectMoneyCommand}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="8*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="{Binding Value}" TextColor="{Binding Value,Converter={StaticResource doubleToColor}}" FontSize="Large" Style="{StaticResource statsLabels}"/>
+                                <StackLayout Grid.Column="1" HorizontalOptions="StartAndExpand">
+                                    <Label Text="{Binding Date}" TextDecorations="Underline"/>
+                                    <Label Text="{Binding Category.Title}"/>
+                                    <Label Text="{Binding Description}"/>
+                                </StackLayout>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                
+            </StackLayout>
+
+
+            <ImageButton Margin="10"
+                         CornerRadius="45"
+                         BackgroundColor="#2296F3"
+                         Source="baseline_done_white_24"
+                         AbsoluteLayout.LayoutBounds="1,1,75,75"
+                         AbsoluteLayout.LayoutFlags="PositionProportional"
+                         Padding="12"
+                         Command="{Binding MoneyViewModel.SaveMoneyCommand}" CommandParameter="{Binding}"/>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>
