@@ -16,7 +16,7 @@
     </ContentPage.Resources>
    
     <ContentPage.Content>
-        <AbsoluteLayout>
+        <AbsoluteLayout Margin="10">
 
             <StackLayout>
                 <Frame HasShadow="True">
@@ -51,7 +51,7 @@
                         SelectionMode="Single" SelectionChangedCommand="{Binding SelectMoneyCommand}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Grid Padding="5">
+                            <Grid Margin="5" Padding="5">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="2*"/>
                                     <ColumnDefinition Width="8*"/>
@@ -59,8 +59,7 @@
                                 <Label Grid.Column="0" Text="{Binding Value}" TextColor="{Binding Value,Converter={StaticResource doubleToColor}}" FontSize="Large" Style="{StaticResource statsLabels}"/>
                                 <StackLayout Grid.Column="1" HorizontalOptions="StartAndExpand">
                                     <Label Text="{Binding Date}" TextDecorations="Underline"/>
-                                    <Label Text="{Binding Category.Title}"/>
-                                    <Label Text="{Binding Description}"/>
+                                    <Label Text="{Binding Info}"/>
                                 </StackLayout>
                             </Grid>
                         </DataTemplate>

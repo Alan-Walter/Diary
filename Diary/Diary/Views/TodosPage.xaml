@@ -13,7 +13,7 @@
     </ContentPage.Resources>
     
     <ContentPage.Content>
-        <AbsoluteLayout>
+        <AbsoluteLayout Margin="10">
             
             <CollectionView ItemsSource="{Binding TodoViews}" 
                             EmptyView="No items to display" 

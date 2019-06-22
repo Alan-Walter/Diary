@@ -17,6 +17,7 @@ namespace Diary.ViewModels
                 if (value == Description) return;
                 Money.Description = value;
                 RaisePropertyChanged();
+                RaisePropertyChanged("Info");
             }
         }
 
@@ -40,8 +41,12 @@ namespace Diary.ViewModels
                 if (value == Category) return;
                 Money.Category = value;
                 RaisePropertyChanged();
+                RaisePropertyChanged("Info");
             }
         }
+
+        public string Info => !string.IsNullOrEmpty(Category?.Title) && !string.IsNullOrEmpty(Description) ?
+            $"{Category.Title} • {Description}" : $"{Category?.Title}{Description}";
 
         public DateTime Date => Money.Date;
 

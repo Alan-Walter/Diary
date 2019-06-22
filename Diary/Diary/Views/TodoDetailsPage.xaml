@@ -11,7 +11,7 @@
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
-        <AbsoluteLayout Margin="20">
+        <AbsoluteLayout Margin="10">
 
             <StackLayout Margin="20"
                          VerticalOptions="CenterAndExpand" 

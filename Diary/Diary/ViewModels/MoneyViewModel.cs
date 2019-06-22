@@ -151,6 +151,7 @@ namespace Diary.ViewModels
                 {
                     await moneyRepository.DeleteAsync(db);
                     MoneyItemViewModels.Remove(moneyItemViewModel);
+                    RaiseAllPropertiesChanged();
                 }
             }
             await Shell.Current.Navigation.PopAsync();

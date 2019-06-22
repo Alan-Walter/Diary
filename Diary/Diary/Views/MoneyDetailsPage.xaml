@@ -10,7 +10,7 @@
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
-        <AbsoluteLayout Margin="20">
+        <AbsoluteLayout Margin="10">
             <TableView Intent="Form" HasUnevenRows="true">
                 <TableRoot>
                     <TableSection Title="Money data">
