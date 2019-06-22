@@ -8,6 +8,7 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Delete" IconImageSource="baseline_delete_forever_white_24" Command="{Binding MoneyViewModel.DeleteMoneyCommand}" CommandParameter="{Binding}"/>
     </ContentPage.ToolbarItems>
+    
     <ContentPage.Content>
         <AbsoluteLayout Margin="20">
             <TableView Intent="Form" HasUnevenRows="true">
