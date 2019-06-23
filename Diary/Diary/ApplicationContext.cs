@@ -14,8 +14,6 @@ namespace Diary
 
         public DbSet<Category> Categories { get; set; }
 
-        public DbSet<Tag> Tags { get; set; }
-
         public ApplicationContext()
         {
             // Создаем бд, если она отсутствует
@@ -34,8 +32,6 @@ namespace Diary
             modelBuilder.ApplyConfiguration(new TodoConfiguration());
             modelBuilder.ApplyConfiguration(new MoneyConfiguration());
             modelBuilder.ApplyConfiguration(new CategoryConfiguration());
-            modelBuilder.ApplyConfiguration(new TagConfiguration());
-            modelBuilder.ApplyConfiguration(new TodoTagConfiguration());
             //base.OnModelCreating(modelBuilder);
         }
     }

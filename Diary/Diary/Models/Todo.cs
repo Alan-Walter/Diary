@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System.Collections.Generic;
 
 namespace Diary.Models
 {
@@ -13,13 +12,6 @@ namespace Diary.Models
         public string Notes { get; set; }
 
         public bool Completed { get; set; }
-
-        public List<TodoTag> TodoTags { get; set; }
-
-        public Todo()
-        {
-            TodoTags = new List<TodoTag>();
-        }
     }
 
     public class TodoConfiguration : IEntityTypeConfiguration<Todo>

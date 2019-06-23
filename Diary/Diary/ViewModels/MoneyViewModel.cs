@@ -125,10 +125,7 @@ namespace Diary.ViewModels
                 if (db == null)
                 {
                     await moneyRepository.CreateAsync(money);
-                    if (MoneyItemViewModels.Count == 0)
-                        MoneyItemViewModels.Add(moneyItemViewModel);
-                    else
-                        MoneyItemViewModels.Insert(0, moneyItemViewModel);
+                    MoneyItemViewModels.Insert(0, moneyItemViewModel);
                 }
                 else
                     await moneyRepository.UpdateAsync(money);
