@@ -4,27 +4,23 @@ using System.Collections.Generic;
 
 namespace Diary.Models
 {
-    public class Todo
+    public class Tag
     {
         public int Id { get; set; }
 
         public string Title { get; set; }
 
-        public string Notes { get; set; }
-
-        public bool Completed { get; set; }
-
         public List<TodoTag> TodoTags { get; set; }
 
-        public Todo()
+        public Tag()
         {
             TodoTags = new List<TodoTag>();
         }
     }
 
-    public class TodoConfiguration : IEntityTypeConfiguration<Todo>
+    public class TagConfiguration : IEntityTypeConfiguration<Tag>
     {
-        public void Configure(EntityTypeBuilder<Todo> builder)
+        public void Configure(EntityTypeBuilder<Tag> builder)
         {
             builder.HasKey(i => i.Id);
             builder.Property(i => i.Title).IsRequired(true);
