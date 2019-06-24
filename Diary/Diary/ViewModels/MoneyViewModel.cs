@@ -14,7 +14,6 @@ namespace Diary.ViewModels
     {
         ObservableCollection<MoneyItemViewModel> moneyItemViewModels;
         MoneyItemViewModel selectedMoneyItem;
-        private ObservableCollection<CategoryItemViewModel> categoryItemViewModels;
 
         #region Repository
 
@@ -70,17 +69,7 @@ namespace Diary.ViewModels
             }
         }
 
-        public ObservableCollection<CategoryItemViewModel> CategoryItemViewModels
-        {
-            get => categoryItemViewModels;
-            set
-            {
-                if (value == categoryItemViewModels) return;
-                categoryItemViewModels = value;
-                RaisePropertyChanged();
-            }
-        }
-
+        public List<Category> Categories { get; private set; }
         #endregion
 
         #region Commands
@@ -113,7 +102,7 @@ namespace Diary.ViewModels
                 .Select(i => new MoneyItemViewModel(i, this)));
             CategoryRepository categoryRepository = new CategoryRepository(); 
             var categories = await categoryRepository.GetAllAsync();
-            CategoryItemViewModels = new ObservableCollection<CategoryItemViewModel>(categories.Select(i => new CategoryItemViewModel(i)));
+            Categories = categories.ToList();
             IsBusy = false;
         }
 

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using Xamarin.Forms;
 
@@ -17,21 +18,13 @@ namespace Diary.ViewModels
 
         public CategoryItemViewModel SelectedCategory { get; set; }
 
-        public ObservableCollection<CategoryItemViewModel> CategoryItemViewModels
-        {
-            get => MoneyViewModel.CategoryItemViewModels;
-            set
-            {
-                if (value == MoneyViewModel.CategoryItemViewModels) return;
-                MoneyViewModel.CategoryItemViewModels = value;
-                RaisePropertyChanged();
-            }
-        }
+        public ObservableCollection<CategoryItemViewModel> CategoryItemViewModels { get; }
 
         public CategoriesViewModel(MoneyViewModel moneyViewModel)
         {
             MoneyViewModel = moneyViewModel;
             categoryRepository = new CategoryRepository();
+            CategoryItemViewModels = new ObservableCollection<CategoryItemViewModel>(MoneyViewModel.Categories.Select(i => new CategoryItemViewModel(i)));
         }
     }
 }

@@ -4,18 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             xmlns:converter="clr-namespace:Diary.Converters"
              x:Class="Diary.Views.CategoriesPage"
              Title="Categories">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <converter:DoubleToColorConverter x:Key="doubleToColor" />
-            <Style x:Key="statsLabels" TargetType="Label">
-                <Setter Property="HorizontalTextAlignment" Value="Center" />
-                <Setter Property="VerticalTextAlignment" Value="Center" />
-            </Style>
-        </ResourceDictionary>
-    </ContentPage.Resources>
 
     <ContentPage.Content>
         <StackLayout Margin="10">
@@ -28,13 +18,13 @@
                             HorizontalOptions="FillAndExpand">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame>
-                            <Label Text="{Binding Title}" TextColor="Black"/>
-                        </Frame>
+                        <Grid>
+                            <Label Text="{Binding Title}" />
+                        </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            <Entry Text="{Binding SelectedCategory.Title}"/>
+            <!--<Entry Text="{Binding SelectedCategory.Title}"/>-->
         </StackLayout>
 
     </ContentPage.Content>

@@ -11,8 +11,6 @@ namespace Diary.ViewModels
 
         public MoneyViewModel MoneyViewModel { get; }
 
-        public List<Category> Categories => MoneyViewModel.CategoryItemViewModels.Select(i => i.Category).ToList();
-
         public string Description
         {
             get { return Money.Description; }

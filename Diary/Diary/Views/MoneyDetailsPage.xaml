@@ -23,7 +23,7 @@
                             <StackLayout Padding="15" VerticalOptions="CenterAndExpand">
                                 <Label Text="Category"/>
                                 <Picker Title="Category" 
-                                        ItemsSource="{Binding Categories}" 
+                                        ItemsSource="{Binding MoneyViewModel.Categories}" 
                                         SelectedItem="{Binding Category, Mode=TwoWay}" 
                                         ItemDisplayBinding="{Binding Title}" 
                                         HorizontalOptions="FillAndExpand"/>
