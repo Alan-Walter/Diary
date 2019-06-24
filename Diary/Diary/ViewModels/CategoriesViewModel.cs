@@ -11,12 +11,22 @@ namespace Diary.ViewModels
     class CategoriesViewModel : SimpleViewModel
     {
         readonly CategoryRepository categoryRepository;
+        private CategoryItemViewModel selectedCategory;
 
         public Command SelectCategoryCommand { get; }
 
         public MoneyViewModel MoneyViewModel { get; }
 
-        public CategoryItemViewModel SelectedCategory { get; set; }
+        public CategoryItemViewModel SelectedCategory
+        {
+            get => selectedCategory;
+            set
+            {
+                if (value == selectedCategory) return;
+                selectedCategory = value;
+                RaisePropertyChanged();
+            }
+        }
 
         public ObservableCollection<CategoryItemViewModel> CategoryItemViewModels { get; }
 

@@ -13,18 +13,31 @@
             <CollectionView ItemsSource="{Binding CategoryItemViewModels}"
                             EmptyView="Categories list is empty" 
                             SelectedItem="{Binding SelectedCategory, Mode=TwoWay}"
-                            SelectionMode="Single" SelectionChangedCommand="{Binding SelectCategoryCommand}"
+                            SelectionMode="Single" 
+                            SelectionChangedCommand="{Binding SelectCategoryCommand}"
                             VerticalOptions="FillAndExpand"
                             HorizontalOptions="FillAndExpand">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
-                            <Label Text="{Binding Title}" />
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="8*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" 
+                                   Text="{Binding Title}" />
+                            <ImageButton Grid.Column="1" 
+                                         Source="baseline_edit_black_24"
+                                         BackgroundColor="Transparent"/>
+                            <ImageButton Grid.Column="2" 
+                                         Source="baseline_delete_outline_black_24"
+                                         BackgroundColor="Transparent"/>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            <!--<Entry Text="{Binding SelectedCategory.Title}"/>-->
+            <Entry Text="{Binding SelectedCategory.Title}"/>
         </StackLayout>
 
     </ContentPage.Content>

@@ -17,7 +17,7 @@
 
     <ContentPage.ToolbarItems>
     <ToolbarItem Text="Categories" 
-                     IconImageSource="baseline_delete_forever_white_24" 
+                     IconImageSource="baseline_list_alt_black_24" 
                      Command="{Binding ShowCategoriesCommand}"/>
     </ContentPage.ToolbarItems>
 
