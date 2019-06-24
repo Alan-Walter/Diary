@@ -1,5 +1,7 @@
 ﻿using Diary.Models;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Diary.ViewModels
 {
@@ -8,6 +10,8 @@ namespace Diary.ViewModels
         public Money Money { get; private set; }
 
         public MoneyViewModel MoneyViewModel { get; }
+
+        public List<Category> Categories => MoneyViewModel.CategoryItemViewModels.Select(i => i.Category).ToList();
 
         public string Description
         {

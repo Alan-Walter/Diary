@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:converter="clr-namespace:Diary.Converters"
+             x:Class="Diary.Views.CategoriesPage"
+             Title="Categories">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:DoubleToColorConverter x:Key="doubleToColor" />
+            <Style x:Key="statsLabels" TargetType="Label">
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout Margin="10">
+
+            <CollectionView ItemsSource="{Binding CategoryItemViewModels}"
+                            EmptyView="Categories list is empty" 
+                            SelectedItem="{Binding SelectedCategory, Mode=TwoWay}"
+                            SelectionMode="Single" SelectionChangedCommand="{Binding SelectCategoryCommand}"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame>
+                            <Label Text="{Binding Title}" TextColor="Black"/>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Entry Text="{Binding SelectedCategory.Title}"/>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

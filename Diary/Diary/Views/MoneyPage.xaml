@@ -14,7 +14,13 @@
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
-   
+
+    <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Categories" 
+                     IconImageSource="baseline_delete_forever_white_24" 
+                     Command="{Binding ShowCategoriesCommand}"/>
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Content>
         <AbsoluteLayout Margin="10">
 

@@ -14,6 +14,7 @@ namespace Diary.ViewModels
     {
         ObservableCollection<MoneyItemViewModel> moneyItemViewModels;
         MoneyItemViewModel selectedMoneyItem;
+        private ObservableCollection<CategoryItemViewModel> categoryItemViewModels;
 
         #region Repository
 
@@ -49,7 +50,7 @@ namespace Diary.ViewModels
 
         public ObservableCollection<MoneyItemViewModel> MoneyItemViewModels
         {
-            get { return moneyItemViewModels; }
+            get => moneyItemViewModels;
             set
             {
                 if (value == moneyItemViewModels) return;
@@ -69,7 +70,16 @@ namespace Diary.ViewModels
             }
         }
 
-        public List<Category> CategoryList { get; private set; }
+        public ObservableCollection<CategoryItemViewModel> CategoryItemViewModels
+        {
+            get => categoryItemViewModels;
+            set
+            {
+                if (value == categoryItemViewModels) return;
+                categoryItemViewModels = value;
+                RaisePropertyChanged();
+            }
+        }
 
         #endregion
 
@@ -79,6 +89,7 @@ namespace Diary.ViewModels
         public Command SaveMoneyCommand { get; }
         public Command DeleteMoneyCommand { get; }
         public Command SelectMoneyCommand { get; }
+        public Command ShowCategoriesCommand { get; }
 
         #endregion
 
@@ -90,18 +101,19 @@ namespace Diary.ViewModels
             SaveMoneyCommand = new Command(async (_) => await SaveMoneyAsync(_), (_) => (_ as MoneyItemViewModel)?.Value != 0);
             DeleteMoneyCommand = new Command(async (_) => await DeleteMoneyAsync(_));
             SelectMoneyCommand = new Command(async () => await SelectMoneyAsync());
+            ShowCategoriesCommand = new Command(async () => await ShowCategoriesAsync());
         }
 
         public async Task LoadDataAsync()
         {
             if (moneyItemViewModels != null) return;
-            CategoryRepository categoryRepository = new CategoryRepository();
             IsBusy = true;
             var moneys = await moneyRepository.GetAllAsync();
             MoneyItemViewModels = new ObservableCollection<MoneyItemViewModel>(moneys.OrderByDescending(y => y.Date)
                 .Select(i => new MoneyItemViewModel(i, this)));
+            CategoryRepository categoryRepository = new CategoryRepository(); 
             var categories = await categoryRepository.GetAllAsync();
-            CategoryList = categories.ToList();
+            CategoryItemViewModels = new ObservableCollection<CategoryItemViewModel>(categories.Select(i => new CategoryItemViewModel(i)));
             IsBusy = false;
         }
 
@@ -163,6 +175,14 @@ namespace Diary.ViewModels
             if (SelectedMoneyItem == null) return;
             await Shell.Current.Navigation.PushAsync(new MoneyDetailsPage(SelectedMoneyItem));
             SelectedMoneyItem = null;
+        }
+
+        private async Task ShowCategoriesAsync()
+        {
+            if (IsBusy) return;
+            IsBusy = true;
+            await Shell.Current.Navigation.PushAsync(new CategoriesPage(this));
+            IsBusy = false;
         }
     }
 }
