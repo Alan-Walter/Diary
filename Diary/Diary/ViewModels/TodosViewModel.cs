@@ -11,7 +11,7 @@ namespace Diary.ViewModels
 {
     public class TodosViewModel : SimpleViewModel
     {
-        IRepository<Todo> repository;
+        TodoRepository repository;
         TodoItemViewModel selectedTodo;
 
         #region Commands
@@ -21,6 +21,8 @@ namespace Diary.ViewModels
         public Command DeleteCommand { get; }
         public Command SelectCommand { get; }
         public Command CompleteCommand { get; }
+        public Command BackCommand { get; }
+
 
         #endregion
 
@@ -52,6 +54,8 @@ namespace Diary.ViewModels
             //  https://metanit.com/sharp/xamarin/11.1.php
         }
 
+        #region Command methods
+
         public async Task LoadAsync()
         {
             if (repository != null) return;
@@ -78,8 +82,7 @@ namespace Diary.ViewModels
             if (todoViewModel != null)
             {
                 var todo = todoViewModel.Todo;
-                var db = await repository.GetAsync(todo.Id);
-                if (db == null)
+                if (App.Database.IsItNew(todo))
                 {
                     await repository.CreateAsync(todo);
                     TodoViews.Add(todoViewModel);
@@ -101,10 +104,9 @@ namespace Diary.ViewModels
             if (todoViewModel != null)
             {
                 var todo = todoViewModel.Todo;
-                var db = await repository.GetAsync(todo.Id);
-                if (db != null)
+                if (!App.Database.IsItNew(todo))
                 {
-                    await repository.DeleteAsync(db);
+                    await repository.DeleteAsync(todo);
                     TodoViews.Remove(todoViewModel);
                 }
             }
@@ -128,5 +130,7 @@ namespace Diary.ViewModels
             await repository.UpdateAsync(todoitem.Todo);
             IsBusy = false;
         }
+
+        #endregion
     }
 }

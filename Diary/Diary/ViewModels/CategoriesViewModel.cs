@@ -64,6 +64,8 @@ namespace Diary.ViewModels
             SaveCommand = new Command(async () => await SaveAsync());
         }
 
+
+
         #region Command methods
         private void AddCategory()
         {
@@ -92,7 +94,7 @@ namespace Diary.ViewModels
         private void CancelEdit()
         {
             IsVisible = false;
-            App.Database.Reset(SelectedCategory.Category);
+            ResetItem();
             SelectedCategory.UpdateProperty();
             SelectedCategory = null;
         }
@@ -109,6 +111,12 @@ namespace Diary.ViewModels
             }
             else await categoryRepository.UpdateAsync(SelectedCategory.Category);
             SelectedCategory = null;
+        }
+
+        private void ResetItem()
+        {
+            if(SelectedCategory != null)
+                App.Database.Reset(SelectedCategory.Category);
         }
 
         #endregion

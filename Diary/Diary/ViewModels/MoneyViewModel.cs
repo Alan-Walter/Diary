@@ -79,6 +79,7 @@ namespace Diary.ViewModels
         public Command DeleteMoneyCommand { get; }
         public Command SelectMoneyCommand { get; }
         public Command ShowCategoriesCommand { get; }
+        public Command BackCommand { get; }
 
         #endregion
 
@@ -92,6 +93,8 @@ namespace Diary.ViewModels
             SelectMoneyCommand = new Command(async () => await SelectMoneyAsync());
             ShowCategoriesCommand = new Command(async () => await ShowCategoriesAsync());
         }
+
+        #region Command methods
 
         public async Task LoadDataAsync()
         {
@@ -122,8 +125,7 @@ namespace Diary.ViewModels
             if (moneyItemViewModel != null)
             {
                 var money = moneyItemViewModel.Money;
-                var db = await moneyRepository.GetAsync(money.Id);
-                if (db == null)
+                if (App.Database.IsItNew(money))
                 {
                     await moneyRepository.CreateAsync(money);
                     MoneyItemViewModels.Insert(0, moneyItemViewModel);
@@ -147,10 +149,9 @@ namespace Diary.ViewModels
             if (moneyItemViewModel != null)
             {
                 var todo = moneyItemViewModel.Money;
-                var db = await moneyRepository.GetAsync(todo.Id);
-                if (db != null)
+                if (!App.Database.IsItNew(todo))
                 {
-                    await moneyRepository.DeleteAsync(db);
+                    await moneyRepository.DeleteAsync(todo);
                     MoneyItemViewModels.Remove(moneyItemViewModel);
                     RaiseAllPropertiesChanged();
                 }
@@ -173,5 +174,7 @@ namespace Diary.ViewModels
             await Shell.Current.Navigation.PushAsync(new CategoriesPage(this));
             IsBusy = false;
         }
+
+        #endregion
     }
 }
