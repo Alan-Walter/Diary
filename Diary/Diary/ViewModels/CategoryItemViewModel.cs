@@ -1,7 +1,4 @@
 ﻿using Diary.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Diary.ViewModels
 {
@@ -23,6 +20,11 @@ namespace Diary.ViewModels
         public CategoryItemViewModel(Category category)
         {
             Category = category;
+        }
+
+        public void UpdateProperty()
+        {
+            RaisePropertyChanged("Title");
         }
     }
 }

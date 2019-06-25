@@ -8,17 +8,10 @@ namespace Diary.Repository
 {
     class TodoRepository : IRepository<Todo>
     {
-        readonly ApplicationContext dbContext;
-
-        public TodoRepository()
-        {
-            dbContext = App.Database;
-        }
-
         public async Task CreateAsync(Todo item)
         {
-            dbContext.Todos.Add(item);
-            await dbContext.SaveChangesAsync().ConfigureAwait(false);
+            App.Database.Todos.Add(item);
+            await App.Database.SaveChangesAsync().ConfigureAwait(false);
         }
 
         public async Task DeleteAsync(int id)
@@ -30,26 +23,26 @@ namespace Diary.Repository
 
         public async Task DeleteAsync(Todo item)
         {
-            dbContext.Todos.Remove(item);
-            await dbContext.SaveChangesAsync().ConfigureAwait(false);
+            App.Database.Todos.Remove(item);
+            await App.Database.SaveChangesAsync().ConfigureAwait(false);
         }
 
         public async Task<Todo> GetAsync(int id)
         {
-            var todo = await dbContext.Todos.Where(i => i.Id == id).FirstOrDefaultAsync().ConfigureAwait(false);
+            var todo = await App.Database.Todos.Where(i => i.Id == id).FirstOrDefaultAsync().ConfigureAwait(false);
             return todo;
         }
 
         public async Task<IEnumerable<Todo>> GetAllAsync()
         {
-            var list = await dbContext.Todos.ToListAsync().ConfigureAwait(false);
+            var list = await App.Database.Todos.ToListAsync().ConfigureAwait(false);
             return list;
         }
 
         public async Task UpdateAsync(Todo item)
         {
-            dbContext.Todos.Update(item);
-            await dbContext.SaveChangesAsync().ConfigureAwait(false);
+            App.Database.Todos.Update(item);
+            await App.Database.SaveChangesAsync().ConfigureAwait(false);
         }
     }
 }
