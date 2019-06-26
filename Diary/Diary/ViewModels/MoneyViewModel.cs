@@ -12,11 +12,21 @@ namespace Diary.ViewModels
 {
     public class MoneyViewModel : SimpleViewModel
     {
+        /// <summary>
+        /// объекты денег
+        /// </summary>
         ObservableCollection<MoneyItemViewModel> moneyItemViewModels;
+
+        /// <summary>
+        /// Выбранный объект
+        /// </summary>
         MoneyItemViewModel selectedMoneyItem;
 
         #region Repository
 
+        /// <summary>
+        /// Репозиторий денег
+        /// </summary>
         readonly MoneyRepository moneyRepository;
 
         #endregion
@@ -49,7 +59,7 @@ namespace Diary.ViewModels
 
         public ObservableCollection<MoneyItemViewModel> MoneyItemViewModels
         {
-            get { return moneyItemViewModels; }
+            get => moneyItemViewModels;
             set
             {
                 if (value == moneyItemViewModels) return;
@@ -69,8 +79,7 @@ namespace Diary.ViewModels
             }
         }
 
-        public List<Category> CategoryList { get; private set; }
-
+        public List<Category> Categories { get; private set; }
         #endregion
 
         #region Commands
@@ -79,9 +88,13 @@ namespace Diary.ViewModels
         public Command SaveMoneyCommand { get; }
         public Command DeleteMoneyCommand { get; }
         public Command SelectMoneyCommand { get; }
+        public Command ShowCategoriesCommand { get; }
 
         #endregion
 
+        /// <summary>
+        /// Конструктор
+        /// </summary>
         public MoneyViewModel()
         {
             moneyRepository = new MoneyRepository();
@@ -90,21 +103,32 @@ namespace Diary.ViewModels
             SaveMoneyCommand = new Command(async (_) => await SaveMoneyAsync(_), (_) => (_ as MoneyItemViewModel)?.Value != 0);
             DeleteMoneyCommand = new Command(async (_) => await DeleteMoneyAsync(_));
             SelectMoneyCommand = new Command(async () => await SelectMoneyAsync());
+            ShowCategoriesCommand = new Command(async () => await ShowCategoriesAsync());
         }
 
+        /// <summary>
+        /// Асинхронная загрузка из базы данных
+        /// </summary>
+        /// <returns></returns>
         public async Task LoadDataAsync()
         {
             if (moneyItemViewModels != null) return;
-            CategoryRepository categoryRepository = new CategoryRepository();
             IsBusy = true;
             var moneys = await moneyRepository.GetAllAsync();
             MoneyItemViewModels = new ObservableCollection<MoneyItemViewModel>(moneys.OrderByDescending(y => y.Date)
                 .Select(i => new MoneyItemViewModel(i, this)));
+            CategoryRepository categoryRepository = new CategoryRepository(); 
             var categories = await categoryRepository.GetAllAsync();
-            CategoryList = categories.ToList();
+            Categories = categories.ToList();
             IsBusy = false;
         }
 
+        #region Command methods
+
+        /// <summary>
+        /// Открытие окна добавления денег
+        /// </summary>
+        /// <returns></returns>
         private async Task AddMoneyAsync()
         {
             if (IsBusy) return;
@@ -113,6 +137,11 @@ namespace Diary.ViewModels
             IsBusy = false;
         }
 
+        /// <summary>
+        /// Сохранение денег в базу данных
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         private async Task SaveMoneyAsync(object obj)
         {
             if (IsBusy) return;
@@ -121,8 +150,7 @@ namespace Diary.ViewModels
             if (moneyItemViewModel != null)
             {
                 var money = moneyItemViewModel.Money;
-                var db = await moneyRepository.GetAsync(money.Id);
-                if (db == null)
+                if (App.Database.IsItNew(money))
                 {
                     await moneyRepository.CreateAsync(money);
                     MoneyItemViewModels.Insert(0, moneyItemViewModel);
@@ -136,6 +164,11 @@ namespace Diary.ViewModels
             IsBusy = false;
         }
 
+        /// <summary>
+        /// Удаление денег из базы данных
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         private async Task DeleteMoneyAsync(object obj)
         {
             if (IsBusy) return;
@@ -146,22 +179,40 @@ namespace Diary.ViewModels
             if (moneyItemViewModel != null)
             {
                 var todo = moneyItemViewModel.Money;
-                var db = await moneyRepository.GetAsync(todo.Id);
-                if (db != null)
+                if (!App.Database.IsItNew(todo))
                 {
-                    await moneyRepository.DeleteAsync(db);
+                    await moneyRepository.DeleteAsync(todo);
                     MoneyItemViewModels.Remove(moneyItemViewModel);
+                    RaiseAllPropertiesChanged();
                 }
             }
             await Shell.Current.Navigation.PopAsync();
             IsBusy = false;
         }
 
+        /// <summary>
+        /// Выбор денег и их редактирование
+        /// </summary>
+        /// <returns></returns>
         private async Task SelectMoneyAsync()
         {
             if (SelectedMoneyItem == null) return;
             await Shell.Current.Navigation.PushAsync(new MoneyDetailsPage(SelectedMoneyItem));
             SelectedMoneyItem = null;
         }
+
+        /// <summary>
+        /// Отображение окна категорий
+        /// </summary>
+        /// <returns></returns>
+        private async Task ShowCategoriesAsync()
+        {
+            if (IsBusy) return;
+            IsBusy = true;
+            await Shell.Current.Navigation.PushAsync(new CategoriesPage(this));
+            IsBusy = false;
+        }
+
+        #endregion
     }
 }

@@ -6,7 +6,7 @@ using Diary.iOS;
 [assembly: Dependency(typeof(IosDbPath))]
 namespace Diary.iOS
 {
-    public class IosDbPath : IPath
+    public class IosDbPath : IDatabasePath
     {
         public string GetDatabasePath(string sqliteFilename)
         {

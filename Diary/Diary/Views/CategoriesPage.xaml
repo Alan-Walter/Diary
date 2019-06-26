@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Name="CategoryPage"
+             x:Class="Diary.Views.CategoriesPage"
+             Title="Categories">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" 
+                     IconImageSource="baseline_add_white_24" 
+                     Command="{Binding AddCategoryCommand}"/>
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <StackLayout Margin="10">
+
+            <CollectionView ItemsSource="{Binding CategoryItemViewModels}"
+                            EmptyView="Categories list is empty">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid HeightRequest="30"
+                              VerticalOptions="CenterAndExpand"
+                              Margin="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="8*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0"
+                                   FontSize="Medium"
+                                   Text="{Binding Title}" />
+                            <ImageButton Grid.Column="1" 
+                                         Source="baseline_edit_black_24"
+                                         BackgroundColor="Transparent"
+                                         Command="{Binding Source={x:Reference CategoryPage}, Path=BindingContext.EditCategoryCommand}"
+                                         CommandParameter="{Binding}"/>
+                            <ImageButton Grid.Column="2" 
+                                         Source="baseline_delete_outline_black_24"
+                                         BackgroundColor="Transparent"
+                                         Command="{Binding Source={x:Reference CategoryPage}, Path=BindingContext.DeleteCategoryCommand}"
+                                         CommandParameter="{Binding}"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            
+            <Grid IsVisible="{Binding IsVisible}"
+                  VerticalOptions="EndAndExpand"
+                  HorizontalOptions="FillAndExpand"
+                  ColumnSpacing="5"
+                  HeightRequest="100">
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <ImageButton Grid.Column="0"
+                             Source="baseline_cancel_black_24"
+                             BackgroundColor="Transparent"
+                             Padding="5"
+                             Command="{Binding CancelEditCommand}"/>
+                
+                <Entry Grid.Column="1"
+                       x:Name="TitleEntry"
+                       Text="{Binding SelectedCategory.Title, Mode=TwoWay}"
+                       Placeholder="Category Title"/>
+                
+                <ImageButton Grid.Column="2"
+                             BackgroundColor="Transparent"
+                             Padding="5"
+                             Source="baseline_check_black_24"
+                             Command="{Binding SaveCommand}"/>
+            </Grid>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

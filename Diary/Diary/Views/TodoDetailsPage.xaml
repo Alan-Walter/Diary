@@ -3,23 +3,35 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Diary.Views.TodoDetailsPage"
              Title="Todo">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Delete" 
+                     IconImageSource="baseline_delete_forever_white_24" 
+                     Command="{Binding TodoPageViewModel.DeleteCommand}" 
+                     CommandParameter="{Binding}"/>
+    </ContentPage.ToolbarItems>
+    
     <ContentPage.Content>
-        <StackLayout Margin="20">
-            <StackLayout VerticalOptions="CenterAndExpand" Spacing="20">
+        <AbsoluteLayout Margin="10">
+
+            <StackLayout Margin="20"
+                         VerticalOptions="CenterAndExpand" 
+                         Spacing="20"
+                         HorizontalOptions="FillAndExpand" 
+                         AbsoluteLayout.LayoutBounds="0,0,1,1"
+                         AbsoluteLayout.LayoutFlags="All">
                 <Entry Text="{Binding Title}" Placeholder="Title" />
                 <Entry Text="{Binding Notes}" Placeholder="Notes" />
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Completed"/>
-                    <Switch IsToggled="{Binding Completed}" />
-                </StackLayout>
+                
             </StackLayout>
-
-            <StackLayout VerticalOptions="EndAndExpand" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                <Button Text="Cancel" Command="{Binding TodoPageViewModel.CancelCommand}" />
-                <Button Text="Delete" Command="{Binding TodoPageViewModel.DeleteCommand}" CommandParameter="{Binding}"/>
-                <Button Text="Save" Command="{Binding TodoPageViewModel.SaveCommand}" CommandParameter="{Binding}"/>
-            </StackLayout>
-
-        </StackLayout>
+            
+            <ImageButton Margin="10"
+                         CornerRadius="45"
+                         BackgroundColor="#2296F3"
+                         Source="baseline_done_white_24"
+                         AbsoluteLayout.LayoutBounds="1,1,75,75"
+                         AbsoluteLayout.LayoutFlags="PositionProportional"
+                         Padding="12"
+                         Command="{Binding TodoPageViewModel.SaveCommand}" CommandParameter="{Binding}"/>
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

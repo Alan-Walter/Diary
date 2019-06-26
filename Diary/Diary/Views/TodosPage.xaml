@@ -2,27 +2,72 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Diary.Views.TodosPage"
+             x:Name="TodoPage"
+             xmlns:converter="clr-namespace:Diary.Converters"
              Title="To Do List">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Icon="@drawable/baseline_add_24" Command="{Binding AddCommand}"/>
-    </ContentPage.ToolbarItems>
-    <CollectionView ItemsSource="{Binding TodoViews}" EmptyView="No items to display" SelectedItem="{Binding SelectedTodo, Mode=TwoWay}" SelectionMode="Single" SelectionChangedCommand="{Binding SelectCommand}">
-        <CollectionView.ItemTemplate>
-            <DataTemplate>
-                <Grid Padding="10">
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <!--<Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>-->
-                    <!--<Switch Grid.Column="0" IsToggled="{Binding Completed}"/>-->
-                    <Label Grid.Row="0" Text="{Binding Title}"/>
-                    <Label Grid.Row="1" Margin="2" Opacity="0.8" Text="{Binding Notes}"/>
-                </Grid>
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
-    </CollectionView>
+   
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:BoolToImageConverter x:Key="boolToImage" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <AbsoluteLayout Margin="10">
+            
+            <CollectionView ItemsSource="{Binding TodoViews}" 
+                            EmptyView="No items to display" 
+                            SelectedItem="{Binding SelectedTodo, Mode=TwoWay}" 
+                            SelectionMode="Single" 
+                            SelectionChangedCommand="{Binding SelectCommand}">
+                <CollectionView.ItemTemplate>
+            
+                    <DataTemplate>
+                        
+                        <Grid Padding="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="9*"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <ImageButton Source="{Binding Completed,Converter={StaticResource boolToImage}}"
+                                         Grid.Row="0"
+                                         Grid.RowSpan="2"
+                                         Grid.Column="0"
+                                         BackgroundColor="Transparent"
+                                         Command="{Binding Source={x:Reference TodoPage}, Path=BindingContext.CompleteCommand}"
+                                         CommandParameter="{Binding}"/>
+                            
+                            <StackLayout Grid.Row="0" Grid.Column="1" Spacing="2" Margin="2">
+                                <Label Text="{Binding Title}"/>
+                                <Label Opacity="0.8" Text="{Binding Notes}"/>
+                            </StackLayout>
+                            
+                        </Grid>
+                    </DataTemplate>
+            
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <ActivityIndicator IsRunning="{Binding IsBusy}"
+                               IsVisible="{Binding IsBusy}"
+                               AbsoluteLayout.LayoutBounds=".5,.5,-1,-1" 
+                               AbsoluteLayout.LayoutFlags="PositionProportional"/>
+            
+            <ImageButton Margin="10"
+                         CornerRadius="45"
+                         BackgroundColor="#2296F3"
+                         Source="baseline_add_white_24"
+                         AbsoluteLayout.LayoutBounds="1,1,75,75"
+                         AbsoluteLayout.LayoutFlags="PositionProportional"
+                         Padding="12"
+                         Command="{Binding AddCommand}"/>
+
+        </AbsoluteLayout>
+
+    </ContentPage.Content>
 </ContentPage>

@@ -19,12 +19,6 @@ namespace Diary.Views
         {
             await todosViewModel.LoadAsync();
             BindingContext = todosViewModel;
-            Debug.Print("OnAppearing");
-        }
-
-        protected override void OnDisappearing()
-        {
-            Debug.Print("OnDisappearing");
         }
     }
 }

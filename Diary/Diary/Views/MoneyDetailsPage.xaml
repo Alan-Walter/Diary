@@ -8,8 +8,9 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Delete" IconImageSource="baseline_delete_forever_white_24" Command="{Binding MoneyViewModel.DeleteMoneyCommand}" CommandParameter="{Binding}"/>
     </ContentPage.ToolbarItems>
+    
     <ContentPage.Content>
-        <AbsoluteLayout Margin="20">
+        <AbsoluteLayout Margin="10">
             <TableView Intent="Form" HasUnevenRows="true">
                 <TableRoot>
                     <TableSection Title="Money data">
@@ -22,7 +23,7 @@
                             <StackLayout Padding="15" VerticalOptions="CenterAndExpand">
                                 <Label Text="Category"/>
                                 <Picker Title="Category" 
-                                        ItemsSource="{Binding MoneyViewModel.CategoryList}" 
+                                        ItemsSource="{Binding MoneyViewModel.Categories}" 
                                         SelectedItem="{Binding Category, Mode=TwoWay}" 
                                         ItemDisplayBinding="{Binding Title}" 
                                         HorizontalOptions="FillAndExpand"/>

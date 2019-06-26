@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Diary.Repository
 {
+    /// <summary>
+    /// Репозиторий денег
+    /// </summary>
     class MoneyRepository : IRepository<Money>
     {
         public async Task CreateAsync(Money item)

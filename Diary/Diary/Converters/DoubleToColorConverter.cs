@@ -4,6 +4,9 @@ using Xamarin.Forms;
 
 namespace Diary.Converters
 {
+    /// <summary>
+    /// Конвертер double в Color
+    /// </summary>
     class DoubleToColorConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
