@@ -1,5 +1,4 @@
-﻿using Diary.ViewModels;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using Xamarin.Forms;
 
 namespace Diary.Views
@@ -9,16 +8,9 @@ namespace Diary.Views
     [DesignTimeVisible(true)]
     public partial class MainPage : Shell
     {
-        readonly MoneyViewModel moneyViewModel;
         public MainPage()
         {
             InitializeComponent();
-            BindingContext = moneyViewModel = new MoneyViewModel();
-        }
-
-        protected override async void OnAppearing()
-        {
-            await moneyViewModel.LoadDataAsync();
         }
     }
 }

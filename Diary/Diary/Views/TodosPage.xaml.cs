@@ -1,5 +1,4 @@
 ﻿using Diary.ViewModels;
-using System.Diagnostics;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,13 +11,12 @@ namespace Diary.Views
         public TodosPage()
         {
             InitializeComponent();
-            todosViewModel = new TodosViewModel();
+            BindingContext = todosViewModel = new TodosViewModel();
         }
 
         protected override async void OnAppearing()
         {
             await todosViewModel.LoadAsync();
-            BindingContext = todosViewModel;
         }
     }
 }

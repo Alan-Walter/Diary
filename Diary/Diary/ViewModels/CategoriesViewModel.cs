@@ -166,7 +166,7 @@ namespace Diary.ViewModels
         /// </summary>
         private void ResetDbActiveItem()
         {
-            if (SelectedCategory != null)
+            if (SelectedCategory != null && !App.Database.IsItNew(SelectedCategory.Category))
                 App.Database.Reset(SelectedCategory.Category);
         }
     }

@@ -1,0 +1,370 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Alphabetical">
+  <Class Name="Diary.Views.CategoriesPage" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\CategoriesPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="categoriesViewModel" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Diary.Views.MainPage" Collapsed="true">
+    <Position X="0.5" Y="5.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\MainPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diary.Views.MoneyDetailsPage" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\MoneyDetailsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diary.Views.MoneyPage" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.75" />
+    <AssociationLine Name="moneyViewModel" Type="Diary.ViewModels.MoneyViewModel">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.345" Y="0.094" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Views\MoneyPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="moneyViewModel" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Diary.Views.SettingsPage" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.75" />
+    <AssociationLine Name="settingsViewModel" Type="Diary.ViewModels.SettingsViewModel">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.156" Y="0.097" Height="0.182" Width="1.452" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Views\SettingsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="settingsViewModel" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Diary.Views.TodoDetailsPage" Collapsed="true">
+    <Position X="0.5" Y="6.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\TodoDetailsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diary.Views.TodosPage" Collapsed="true">
+    <Position X="0.5" Y="7.5" Width="1.75" />
+    <AssociationLine Name="todosViewModel" Type="Diary.ViewModels.TodosViewModel">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.225" Y="0.11" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Views\TodosPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="todosViewModel" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Diary.Repository.CategoryRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="4.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAIIAAAIA=</HashCode>
+      <FileName>Repository\CategoryRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Diary.Repository.MoneyRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="3.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAIIAAAIA=</HashCode>
+      <FileName>Repository\MoneyRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Diary.Repository.TodoRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="7.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAIIAAAIA=</HashCode>
+      <FileName>Repository\TodoRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Diary.ViewModels.CategoriesViewModel" Collapsed="true">
+    <Position X="4" Y="4.5" Width="2" />
+    <InheritanceLine Type="Diary.ViewModels.SimpleViewModel" FixedToPoint="true">
+      <Path>
+        <Point X="7.25" Y="1.191" />
+        <Point X="7.25" Y="4.875" />
+        <Point X="6" Y="4.875" />
+      </Path>
+    </InheritanceLine>
+    <AssociationLine Name="categoryRepository" Type="Diary.Repository.CategoryRepository">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.208" Y="0.171" Height="0.182" Width="1.384" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="MoneyViewModel" Type="Diary.ViewModels.MoneyViewModel">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.069" Y="0.06" Height="0.182" Width="1.398" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="SelectedCategory" Type="Diary.ViewModels.CategoryItemViewModel">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.118" Y="0.052" Height="0.182" Width="1.375" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>BAAAJAAAAAQAGCAQABAAAAAQAoAAAYAAAAAgBAAkAAA=</HashCode>
+      <FileName>ViewModels\CategoriesViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="categoryRepository" />
+      <Property Name="MoneyViewModel" />
+      <Property Name="SelectedCategory" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Diary.ViewModels.CategoryItemViewModel" Collapsed="true">
+    <Position X="4" Y="5.5" Width="2" />
+    <InheritanceLine Type="Diary.ViewModels.SimpleViewModel" FixedToPoint="true">
+      <Path>
+        <Point X="7.25" Y="1.191" />
+        <Point X="7.25" Y="5.875" />
+        <Point X="6" Y="5.875" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAABAAAACAA=</HashCode>
+      <FileName>ViewModels\CategoryItemViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Category" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Diary.ViewModels.MoneyItemViewModel" Collapsed="true">
+    <Position X="4" Y="2.5" Width="2" />
+    <InheritanceLine Type="Diary.ViewModels.SimpleViewModel" FixedToPoint="true">
+      <Path>
+        <Point X="7.25" Y="1.191" />
+        <Point X="7.25" Y="2.875" />
+        <Point X="6" Y="2.875" />
+      </Path>
+    </InheritanceLine>
+    <AssociationLine Name="MoneyViewModel" Type="Diary.ViewModels.MoneyViewModel">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.075" Y="0.085" Height="0.182" Width="1.354" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAgACAAAAAAAAAAAAAAAAABAAAgAEAACAA=</HashCode>
+      <FileName>ViewModels\MoneyItemViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Money" />
+      <Property Name="MoneyViewModel" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Diary.ViewModels.MoneyViewModel" Collapsed="true">
+    <Position X="4" Y="3.5" Width="2" />
+    <InheritanceLine Type="Diary.ViewModels.SimpleViewModel" FixedToPoint="true">
+      <Path>
+        <Point X="7.25" Y="1.191" />
+        <Point X="7.25" Y="3.875" />
+        <Point X="6" Y="3.875" />
+      </Path>
+    </InheritanceLine>
+    <AssociationLine Name="SelectedMoneyItem" Type="Diary.ViewModels.MoneyItemViewModel">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="-1.56" Y="0.102" Height="0.182" Width="1.472" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAIAGAAAgAAgABAwAgADGUABAgAAAAEAAEEA=</HashCode>
+      <FileName>ViewModels\MoneyViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="moneyRepository" />
+      <Property Name="SelectedMoneyItem" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Diary.ViewModels.SettingsViewModel" Collapsed="true">
+    <Position X="4" Y="1.5" Width="2" />
+    <InheritanceLine Type="Diary.ViewModels.SimpleViewModel" FixedToPoint="true">
+      <Path>
+        <Point X="7.25" Y="1.191" />
+        <Point X="7.25" Y="1.875" />
+        <Point X="6" Y="1.875" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAABIAAAAAAA=</HashCode>
+      <FileName>ViewModels\SettingsViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diary.ViewModels.SimpleViewModel" Collapsed="true">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAEAAAABAgAAAAAEAAAAAAAAAAIA=</HashCode>
+      <FileName>ViewModels\SimpleViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diary.ViewModels.TodoItemViewModel" Collapsed="true">
+    <Position X="4" Y="6.5" Width="2" />
+    <InheritanceLine Type="Diary.ViewModels.SimpleViewModel" FixedToPoint="true">
+      <Path>
+        <Point X="7.25" Y="1.191" />
+        <Point X="7.25" Y="6.875" />
+        <Point X="6" Y="6.875" />
+      </Path>
+    </InheritanceLine>
+    <AssociationLine Name="TodoPageViewModel" Type="Diary.ViewModels.TodosViewModel">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.063" Y="0.073" Height="0.182" Width="1.513" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAQAACEIAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\TodoItemViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Todo" />
+      <Property Name="TodoPageViewModel" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Diary.ViewModels.TodosViewModel" Collapsed="true">
+    <Position X="4" Y="7.5" Width="2" />
+    <InheritanceLine Type="Diary.ViewModels.SimpleViewModel" FixedToPoint="true">
+      <Path>
+        <Point X="7.25" Y="1.191" />
+        <Point X="7.25" Y="7.875" />
+        <Point X="6" Y="7.875" />
+      </Path>
+    </InheritanceLine>
+    <AssociationLine Name="repository" Type="Diary.Repository.TodoRepository">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.51" Y="0.11" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="SelectedTodo" Type="Diary.ViewModels.TodoItemViewModel">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="-1.221" Y="0.096" Height="0.182" Width="1.054" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAgQAAEgAAACAAECAAAABAAAAAEgAAQBAAAkAAAEAAA=</HashCode>
+      <FileName>ViewModels\TodosViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="repository" />
+      <Property Name="SelectedTodo" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Diary.Models.Category" Collapsed="true">
+    <Position X="11.75" Y="5.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAASAAAAAAAAAEAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Category.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diary.Models.CategoryConfiguration" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="5.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Category.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diary.Models.Money" Collapsed="true">
+    <Position X="11.75" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgAAAAAAAAAAAAAAAAAAABAAAgAAAACAA=</HashCode>
+      <FileName>Models\Money.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Category" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Diary.Models.MoneyConfiguration" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Money.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diary.Models.Todo" Collapsed="true">
+    <Position X="11.75" Y="6.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAiAAAAAAAAAEIAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Todo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diary.Models.TodoConfiguration" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="6.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Todo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diary.Converters.BoolToImageConverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.25" Y="4.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Converters\BoolToImageConverter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diary.Converters.DoubleToColorConverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.25" Y="3.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Converters\DoubleToColorConverter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diary.AppContextExtension" Collapsed="true">
+    <Position X="11.75" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AppContextExtension.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diary.ApplicationContext" Collapsed="true">
+    <Position X="11.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAQAAACAAAAAAAAAAEAAAEAAAIAAAAAAAAAA=</HashCode>
+      <FileName>ApplicationContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diary.App" Collapsed="true">
+    <Position X="14.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAFAAAAhAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Database" />
+    </ShowAsAssociation>
+  </Class>
+  <Interface Name="Diary.Repository.IRepository&lt;T&gt;" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAIIAAAIA=</HashCode>
+      <FileName>Repository\IRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Diary.IDatabasePath" Collapsed="true">
+    <Position X="17" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IDatabasePath.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

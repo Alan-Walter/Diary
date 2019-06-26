@@ -8,10 +8,11 @@ namespace Diary.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SettingsPage : ContentPage
     {
+        readonly SettingsViewModel settingsViewModel;
         public SettingsPage()
         {
             InitializeComponent();
-            BindingContext = new SettingsViewModel();
+            BindingContext = settingsViewModel = new SettingsViewModel();
         }
     }
 }
