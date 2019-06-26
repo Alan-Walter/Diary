@@ -4,6 +4,9 @@ using Xamarin.Forms;
 
 namespace Diary.Converters
 {
+    /// <summary>
+    /// Конвертер bool в назваие файла изображения
+    /// </summary>
     class BoolToImageConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

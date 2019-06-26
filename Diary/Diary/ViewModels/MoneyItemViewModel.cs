@@ -1,16 +1,23 @@
 ﻿using Diary.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Diary.ViewModels
 {
     public class MoneyItemViewModel : SimpleViewModel
     {
+        /// <summary>
+        /// Объект базы данных
+        /// </summary>
         public Money Money { get; private set; }
 
+        /// <summary>
+        /// Вью модель всех денег
+        /// </summary>
         public MoneyViewModel MoneyViewModel { get; }
 
+        /// <summary>
+        /// Описание
+        /// </summary>
         public string Description
         {
             get { return Money.Description; }
@@ -23,6 +30,9 @@ namespace Diary.ViewModels
             }
         }
 
+        /// <summary>
+        /// Значение
+        /// </summary>
         public double Value
         {
             get { return Money.Value; }
@@ -35,6 +45,9 @@ namespace Diary.ViewModels
             }
         }
 
+        /// <summary>
+        /// Категория
+        /// </summary>
         public Category Category
         {
             get { return Money.Category; }
@@ -47,9 +60,15 @@ namespace Diary.ViewModels
             }
         }
 
+        /// <summary>
+        /// Информация о деньгах
+        /// </summary>
         public string Info => !string.IsNullOrEmpty(Category?.Title) && !string.IsNullOrEmpty(Description) ?
             $"{Category.Title} • {Description}" : $"{Category?.Title}{Description}";
 
+        /// <summary>
+        /// Дата и время
+        /// </summary>
         public DateTime Date => Money.Date;
 
         public MoneyItemViewModel(Money money, MoneyViewModel moneyViewModel)

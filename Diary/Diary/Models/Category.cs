@@ -4,10 +4,19 @@ using System.Collections.Generic;
 
 namespace Diary.Models
 {
+    /// <summary>
+    /// Модель сущности категории
+    /// </summary>
     public class Category
     {
+        /// <summary>
+        /// Идентификатор
+        /// </summary>
         public int Id { get; set; }
 
+        /// <summary>
+        /// Заголовок категории
+        /// </summary>
         public string Title { get; set; }
 
         public List<Money> Moneys { get; set; }
@@ -18,6 +27,9 @@ namespace Diary.Models
         }
     }
 
+    /// <summary>
+    /// Конфигуратор модели
+    /// </summary>
     public class CategoryConfiguration : IEntityTypeConfiguration<Category>
     {
         public void Configure(EntityTypeBuilder<Category> builder)

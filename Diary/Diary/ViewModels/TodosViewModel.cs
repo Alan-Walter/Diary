@@ -1,5 +1,4 @@
-﻿using Diary.Models;
-using Diary.Repository;
+﻿using Diary.Repository;
 using Diary.Views;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,7 +10,14 @@ namespace Diary.ViewModels
 {
     public class TodosViewModel : SimpleViewModel
     {
+        /// <summary>
+        /// Репозиторий Todo
+        /// </summary>
         TodoRepository repository;
+
+        /// <summary>
+        /// Выбранный Todo
+        /// </summary>
         TodoItemViewModel selectedTodo;
 
         #region Commands
@@ -21,7 +27,6 @@ namespace Diary.ViewModels
         public Command DeleteCommand { get; }
         public Command SelectCommand { get; }
         public Command CompleteCommand { get; }
-        public Command BackCommand { get; }
 
 
         #endregion
@@ -44,6 +49,9 @@ namespace Diary.ViewModels
 
         #endregion
 
+        /// <summary>
+        /// Конструктор
+        /// </summary>
         public TodosViewModel()
         {
             AddCommand = new Command(async () => await AddTodoAsync());
@@ -51,11 +59,12 @@ namespace Diary.ViewModels
             DeleteCommand = new Command(async (_) => await DeleteTodoAsync(_));
             SelectCommand = new Command(async () => await SelectTodoAsync());
             CompleteCommand = new Command(async (_) => await CompleteTodoAsync(_));
-            //  https://metanit.com/sharp/xamarin/11.1.php
         }
 
-        #region Command methods
-
+        /// <summary>
+        /// Загрузка из базы данных
+        /// </summary>
+        /// <returns></returns>
         public async Task LoadAsync()
         {
             if (repository != null) return;
@@ -66,6 +75,12 @@ namespace Diary.ViewModels
             IsBusy = false;
         }
 
+        #region Command methods
+
+        /// <summary>
+        /// Добавление нового todo
+        /// </summary>
+        /// <returns></returns>
         private async Task AddTodoAsync()
         {
             if (IsBusy) return;
@@ -74,6 +89,11 @@ namespace Diary.ViewModels
             IsBusy = false;
         }
 
+        /// <summary>
+        /// Сохранение объекта todo
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         private async Task SaveTodoAsync(object obj)
         {
             if (IsBusy) return;
@@ -94,6 +114,11 @@ namespace Diary.ViewModels
             IsBusy = false;
         }
 
+        /// <summary>
+        /// Удаление объекта todo
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         private async Task DeleteTodoAsync(object obj)
         {
             if (IsBusy) return;
@@ -114,6 +139,10 @@ namespace Diary.ViewModels
             IsBusy = false;
         }
 
+        /// <summary>
+        /// Выбор todo
+        /// </summary>
+        /// <returns></returns>
         private async Task SelectTodoAsync()
         {
             if (SelectedTodo == null) return;
@@ -121,6 +150,11 @@ namespace Diary.ViewModels
             SelectedTodo = null;
         }
 
+        /// <summary>
+        /// Выполнение todo
+        /// </summary>
+        /// <param name="todo"></param>
+        /// <returns></returns>
         private async Task CompleteTodoAsync(object todo)
         {
             if (IsBusy) return;

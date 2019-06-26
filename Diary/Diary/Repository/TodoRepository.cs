@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Diary.Repository
 {
+    /// <summary>
+    /// Репозиторий Todo
+    /// </summary>
     class TodoRepository : IRepository<Todo>
     {
         public async Task CreateAsync(Todo item)

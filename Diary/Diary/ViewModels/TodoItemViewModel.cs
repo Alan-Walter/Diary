@@ -1,15 +1,25 @@
 ﻿using Diary.Models;
-using System.Threading.Tasks;
-using Xamarin.Forms;
 
 namespace Diary.ViewModels
 {
+    /// <summary>
+    /// View model для Todo
+    /// </summary>
     public class TodoItemViewModel : SimpleViewModel
     {
+        /// <summary>
+        /// Объект базы данных
+        /// </summary>
         public Todo Todo { get; private set; }
 
+        /// <summary>
+        /// View Model со всеми todo
+        /// </summary>
         public TodosViewModel TodoPageViewModel { get; }
 
+        /// <summary>
+        /// Заголовок
+        /// </summary>
         public string Title
         {
             get { return Todo.Title; }
@@ -22,6 +32,9 @@ namespace Diary.ViewModels
             }
         }
 
+        /// <summary>
+        /// Заметки
+        /// </summary>
         public string Notes
         {
             get { return Todo.Notes; }
@@ -33,6 +46,9 @@ namespace Diary.ViewModels
             }
         }
 
+        /// <summary>
+        /// Выполнение задания
+        /// </summary>
         public bool Completed
         {
             get { return Todo.Completed; }
@@ -44,6 +60,11 @@ namespace Diary.ViewModels
             }
         }
 
+        /// <summary>
+        /// Конструктор класса
+        /// </summary>
+        /// <param name="todo"></param>
+        /// <param name="todoPageViewModel"></param>
         public TodoItemViewModel(Todo todo, TodosViewModel todoPageViewModel)
         {
             this.Todo = todo;

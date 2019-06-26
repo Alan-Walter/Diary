@@ -6,10 +6,19 @@ using System.Runtime.CompilerServices;
 
 namespace Diary.ViewModels
 {
+    /// <summary>
+    /// Базовый класс для всех View Model
+    /// </summary>
     public class SimpleViewModel : INotifyPropertyChanged
     {
+        /// <summary>
+        /// Занятость
+        /// </summary>
         private bool isBusy;
 
+        /// <summary>
+        /// Свойство занятости
+        /// </summary>
         public bool IsBusy
         {
             get { return isBusy; }
@@ -21,6 +30,9 @@ namespace Diary.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
 
+        /// <summary>
+        /// Вызов делагата, уведомляющий вью об изменении всех свойств
+        /// </summary>
         protected void RaiseAllPropertiesChanged()
         {
             // By convention, an empty string indicates all properties are invalid.
@@ -33,6 +45,10 @@ namespace Diary.ViewModels
             this.RaisePropertyChanged(prop.Name);
         }
 
+        /// <summary>
+        /// Уведомление View об изменении свойства
+        /// </summary>
+        /// <param name="propertyName"></param>
         protected void RaisePropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
@@ -50,6 +66,14 @@ namespace Diary.ViewModels
             return true;
         }
 
+        /// <summary>
+        /// Установка значения свойству
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="storageField"></param>
+        /// <param name="newValue"></param>
+        /// <param name="propertyName"></param>
+        /// <returns></returns>
         protected bool SetPropertyValue<T>(ref T storageField, T newValue, [CallerMemberName] string propertyName = "")
         {
             if (Equals(storageField, newValue))

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Diary.Repository
 {
+    /// <summary>
+    /// Репозиторий категорий
+    /// </summary>
     class CategoryRepository : IRepository<Category>
     {
         public async Task CreateAsync(Category item)

@@ -12,11 +12,21 @@ namespace Diary.ViewModels
 {
     public class MoneyViewModel : SimpleViewModel
     {
+        /// <summary>
+        /// объекты денег
+        /// </summary>
         ObservableCollection<MoneyItemViewModel> moneyItemViewModels;
+
+        /// <summary>
+        /// Выбранный объект
+        /// </summary>
         MoneyItemViewModel selectedMoneyItem;
 
         #region Repository
 
+        /// <summary>
+        /// Репозиторий денег
+        /// </summary>
         readonly MoneyRepository moneyRepository;
 
         #endregion
@@ -79,10 +89,12 @@ namespace Diary.ViewModels
         public Command DeleteMoneyCommand { get; }
         public Command SelectMoneyCommand { get; }
         public Command ShowCategoriesCommand { get; }
-        public Command BackCommand { get; }
 
         #endregion
 
+        /// <summary>
+        /// Конструктор
+        /// </summary>
         public MoneyViewModel()
         {
             moneyRepository = new MoneyRepository();
@@ -94,8 +106,10 @@ namespace Diary.ViewModels
             ShowCategoriesCommand = new Command(async () => await ShowCategoriesAsync());
         }
 
-        #region Command methods
-
+        /// <summary>
+        /// Асинхронная загрузка из базы данных
+        /// </summary>
+        /// <returns></returns>
         public async Task LoadDataAsync()
         {
             if (moneyItemViewModels != null) return;
@@ -109,6 +123,12 @@ namespace Diary.ViewModels
             IsBusy = false;
         }
 
+        #region Command methods
+
+        /// <summary>
+        /// Открытие окна добавления денег
+        /// </summary>
+        /// <returns></returns>
         private async Task AddMoneyAsync()
         {
             if (IsBusy) return;
@@ -117,6 +137,11 @@ namespace Diary.ViewModels
             IsBusy = false;
         }
 
+        /// <summary>
+        /// Сохранение денег в базу данных
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         private async Task SaveMoneyAsync(object obj)
         {
             if (IsBusy) return;
@@ -139,6 +164,11 @@ namespace Diary.ViewModels
             IsBusy = false;
         }
 
+        /// <summary>
+        /// Удаление денег из базы данных
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         private async Task DeleteMoneyAsync(object obj)
         {
             if (IsBusy) return;
@@ -160,6 +190,10 @@ namespace Diary.ViewModels
             IsBusy = false;
         }
 
+        /// <summary>
+        /// Выбор денег и их редактирование
+        /// </summary>
+        /// <returns></returns>
         private async Task SelectMoneyAsync()
         {
             if (SelectedMoneyItem == null) return;
@@ -167,6 +201,10 @@ namespace Diary.ViewModels
             SelectedMoneyItem = null;
         }
 
+        /// <summary>
+        /// Отображение окна категорий
+        /// </summary>
+        /// <returns></returns>
         private async Task ShowCategoriesAsync()
         {
             if (IsBusy) return;

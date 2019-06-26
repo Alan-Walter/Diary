@@ -6,18 +6,44 @@ using Xamarin.Forms;
 
 namespace Diary.ViewModels
 {
+    /// <summary>
+    /// View Model категорий
+    /// </summary>
     class CategoriesViewModel : SimpleViewModel
     {
+        /// <summary>
+        /// Репозиторий категорий
+        /// </summary>
         readonly CategoryRepository categoryRepository;
+        /// <summary>
+        /// Выбранный объект категории
+        /// </summary>
         CategoryItemViewModel selectedCategory;
+        /// <summary>
+        /// Видимость строки ввода
+        /// </summary>
         private bool isVisible = false;
 
         #region Commands
-
+        /// <summary>
+        /// Добавление категории
+        /// </summary>
         public Command AddCategoryCommand { get; }
+        /// <summary>
+        /// Удаление категории
+        /// </summary>
         public Command DeleteCategoryCommand { get; }
+        /// <summary>
+        /// Редактирование категории
+        /// </summary>
         public Command EditCategoryCommand { get; }
+        /// <summary>
+        /// Отмена редактирования категории
+        /// </summary>
         public Command CancelEditCommand { get; }
+        /// <summary>
+        /// Сохранение категории
+        /// </summary>
         public Command SaveCommand { get; }
 
         #endregion
@@ -51,6 +77,10 @@ namespace Diary.ViewModels
 
         #endregion
 
+        /// <summary>
+        /// Конструктор класса
+        /// </summary>
+        /// <param name="moneyViewModel"></param>
         public CategoriesViewModel(MoneyViewModel moneyViewModel)
         {
             MoneyViewModel = moneyViewModel;
@@ -64,9 +94,10 @@ namespace Diary.ViewModels
             SaveCommand = new Command(async () => await SaveAsync());
         }
 
-
-
         #region Command methods
+        /// <summary>
+        /// Добавление категории
+        /// </summary>
         private void AddCategory()
         {
             if (IsVisible) return;
@@ -74,6 +105,11 @@ namespace Diary.ViewModels
             SelectedCategory = new CategoryItemViewModel(new Models.Category());
         }
 
+        /// <summary>
+        /// Удаление категории
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         private async Task DeleteCategoryAsync(object obj)
         {
             if (IsVisible || !(obj is CategoryItemViewModel categoryItem)) return;
@@ -84,6 +120,10 @@ namespace Diary.ViewModels
             CategoryItemViewModels.Remove(categoryItem);
         }
 
+        /// <summary>
+        /// Изменение категории
+        /// </summary>
+        /// <param name="obj"></param>
         private void EditCategory(object obj)
         {
             if (IsVisible || !(obj is CategoryItemViewModel categoryItem)) return;
@@ -91,14 +131,21 @@ namespace Diary.ViewModels
             IsVisible = true;
         }
 
+        /// <summary>
+        /// Завершение изменения
+        /// </summary>
         private void CancelEdit()
         {
             IsVisible = false;
-            ResetItem();
+            ResetDbActiveItem();
             SelectedCategory.UpdateProperty();
             SelectedCategory = null;
         }
 
+        /// <summary>
+        /// Асинхронное сохранение
+        /// </summary>
+        /// <returns></returns>
         private async Task SaveAsync()
         {
             if (string.IsNullOrEmpty(SelectedCategory?.Title)) return;
@@ -112,13 +159,15 @@ namespace Diary.ViewModels
             else await categoryRepository.UpdateAsync(SelectedCategory.Category);
             SelectedCategory = null;
         }
+        #endregion
 
-        private void ResetItem()
+        /// <summary>
+        /// Сброс объекта базы данных
+        /// </summary>
+        private void ResetDbActiveItem()
         {
-            if(SelectedCategory != null)
+            if (SelectedCategory != null)
                 App.Database.Reset(SelectedCategory.Category);
         }
-
-        #endregion
     }
 }

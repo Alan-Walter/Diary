@@ -4,8 +4,14 @@ namespace Diary.ViewModels
 {
     public class CategoryItemViewModel : SimpleViewModel
     {
+        /// <summary>
+        /// Объект базы данных
+        /// </summary>
         public Category Category { get; }
 
+        /// <summary>
+        /// Заголовок
+        /// </summary>
         public string Title
         {
             get => Category.Title;
