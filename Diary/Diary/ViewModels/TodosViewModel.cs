@@ -20,6 +20,11 @@ namespace Diary.ViewModels
         /// </summary>
         TodoItemViewModel selectedTodo;
 
+        /// <summary>
+        /// Список todoViews
+        /// </summary>
+        ObservableCollection<TodoItemViewModel> todoViews;
+
         #region Commands
 
         public Command AddCommand { get; }
@@ -33,14 +38,20 @@ namespace Diary.ViewModels
 
         #region Properties
 
-        public IList<TodoItemViewModel> TodoViews { get; private set; }
+        public ObservableCollection<TodoItemViewModel> TodoViews
+        {
+            get => todoViews;
+            set
+            {
+                if (value == todoViews) return;
+                todoViews = value;
+                RaisePropertyChanged();
+            }
+        }
 
         public TodoItemViewModel SelectedTodo
         {
-            get
-            {
-                return selectedTodo;
-            }
+            get => selectedTodo;
             set
             {
                 SetPropertyValue(ref selectedTodo, value);
@@ -108,7 +119,7 @@ namespace Diary.ViewModels
                     TodoViews.Add(todoViewModel);
                 }
                 else await repository.UpdateAsync(todo);
-                
+
             }
             await Shell.Current.Navigation.PopAsync();
             IsBusy = false;
