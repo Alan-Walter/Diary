@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Alphabetical">
+<ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Diary.Views.CategoriesPage" Collapsed="true">
     <Position X="0.5" Y="4.5" Width="1.75" />
     <TypeIdentifier>
@@ -20,7 +20,7 @@
   <Class Name="Diary.Views.MoneyDetailsPage" Collapsed="true">
     <Position X="0.5" Y="2.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Views\MoneyDetailsPage.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -57,7 +57,7 @@
   <Class Name="Diary.Views.TodoDetailsPage" Collapsed="true">
     <Position X="0.5" Y="6.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Views\TodoDetailsPage.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -104,7 +104,7 @@
     <Position X="4" Y="4.5" Width="2" />
     <InheritanceLine Type="Diary.ViewModels.SimpleViewModel" FixedToPoint="true">
       <Path>
-        <Point X="7.25" Y="1.191" />
+        <Point X="7.25" Y="1.062" />
         <Point X="7.25" Y="4.875" />
         <Point X="6" Y="4.875" />
       </Path>
@@ -138,7 +138,7 @@
     <Position X="4" Y="5.5" Width="2" />
     <InheritanceLine Type="Diary.ViewModels.SimpleViewModel" FixedToPoint="true">
       <Path>
-        <Point X="7.25" Y="1.191" />
+        <Point X="7.25" Y="1.062" />
         <Point X="7.25" Y="5.875" />
         <Point X="6" Y="5.875" />
       </Path>
@@ -155,14 +155,14 @@
     <Position X="4" Y="2.5" Width="2" />
     <InheritanceLine Type="Diary.ViewModels.SimpleViewModel" FixedToPoint="true">
       <Path>
-        <Point X="7.25" Y="1.191" />
+        <Point X="7.25" Y="1.062" />
         <Point X="7.25" Y="2.875" />
         <Point X="6" Y="2.875" />
       </Path>
     </InheritanceLine>
     <AssociationLine Name="MoneyViewModel" Type="Diary.ViewModels.MoneyViewModel">
       <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
-        <Position X="0.075" Y="0.085" Height="0.182" Width="1.354" />
+        <Position X="-1.551" Y="0.057" Height="0.182" Width="1.354" />
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
@@ -178,14 +178,14 @@
     <Position X="4" Y="3.5" Width="2" />
     <InheritanceLine Type="Diary.ViewModels.SimpleViewModel" FixedToPoint="true">
       <Path>
-        <Point X="7.25" Y="1.191" />
+        <Point X="7.25" Y="1.062" />
         <Point X="7.25" Y="3.875" />
         <Point X="6" Y="3.875" />
       </Path>
     </InheritanceLine>
     <AssociationLine Name="SelectedMoneyItem" Type="Diary.ViewModels.MoneyItemViewModel">
       <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
-        <Position X="-1.56" Y="0.102" Height="0.182" Width="1.472" />
+        <Position X="0.066" Y="0.074" Height="0.182" Width="1.472" />
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
@@ -201,7 +201,7 @@
     <Position X="4" Y="1.5" Width="2" />
     <InheritanceLine Type="Diary.ViewModels.SimpleViewModel" FixedToPoint="true">
       <Path>
-        <Point X="7.25" Y="1.191" />
+        <Point X="7.25" Y="1.062" />
         <Point X="7.25" Y="1.875" />
         <Point X="6" Y="1.875" />
       </Path>
@@ -217,19 +217,30 @@
       <HashCode>AAAAAAACAAAAAAAAAEAAAABAgAAAAAEAAAAAAAAAAIA=</HashCode>
       <FileName>ViewModels\SimpleViewModel.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Diary.ViewModels.TodoItemViewModel" Collapsed="true">
     <Position X="4" Y="6.5" Width="2" />
     <InheritanceLine Type="Diary.ViewModels.SimpleViewModel" FixedToPoint="true">
       <Path>
-        <Point X="7.25" Y="1.191" />
-        <Point X="7.25" Y="6.875" />
-        <Point X="6" Y="6.875" />
+        <Point X="7.25" Y="1.062" />
+        <Point X="7.25" Y="6.812" />
+        <Point X="6" Y="6.812" />
       </Path>
     </InheritanceLine>
+    <AssociationLine Name="Todo" Type="Diary.Models.Todo" FixedToPoint="true">
+      <Path>
+        <Point X="6" Y="7.033" />
+        <Point X="6.375" Y="7.033" />
+        <Point X="6.375" Y="6.812" />
+        <Point X="7.167" Y="6.812" Type="JumpStart" />
+        <Point X="7.333" Y="6.812" Type="JumpEnd" />
+        <Point X="11.75" Y="6.812" />
+      </Path>
+    </AssociationLine>
     <AssociationLine Name="TodoPageViewModel" Type="Diary.ViewModels.TodosViewModel">
       <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
-        <Position X="0.063" Y="0.073" Height="0.182" Width="1.513" />
+        <Position X="-1.618" Y="0.045" Height="0.182" Width="1.513" />
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
@@ -245,7 +256,7 @@
     <Position X="4" Y="7.5" Width="2" />
     <InheritanceLine Type="Diary.ViewModels.SimpleViewModel" FixedToPoint="true">
       <Path>
-        <Point X="7.25" Y="1.191" />
+        <Point X="7.25" Y="1.062" />
         <Point X="7.25" Y="7.875" />
         <Point X="6" Y="7.875" />
       </Path>
@@ -257,7 +268,7 @@
     </AssociationLine>
     <AssociationLine Name="SelectedTodo" Type="Diary.ViewModels.TodoItemViewModel">
       <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
-        <Position X="-1.221" Y="0.096" Height="0.182" Width="1.054" />
+        <Position X="0.239" Y="0.055" Height="0.182" Width="1.054" />
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
@@ -282,6 +293,7 @@
       <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Category.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Diary.Models.Money" Collapsed="true">
     <Position X="11.75" Y="2.5" Width="2" />
@@ -299,34 +311,38 @@
       <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Money.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Diary.Models.Todo" Collapsed="true">
-    <Position X="11.75" Y="6.75" Width="2" />
+    <Position X="11.75" Y="6.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAiAAAAAAAAAEIAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Todo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Diary.Models.TodoConfiguration" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="14.5" Y="6.75" Width="2" />
+    <Position X="14.5" Y="6.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Todo.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Diary.Converters.BoolToImageConverter" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="17.25" Y="4.25" Width="2" />
+    <Position X="14.5" Y="7.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Converters\BoolToImageConverter.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Diary.Converters.DoubleToColorConverter" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="17.25" Y="3.25" Width="2" />
+    <Position X="14.5" Y="3.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Converters\DoubleToColorConverter.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Diary.AppContextExtension" Collapsed="true">
     <Position X="11.75" Y="1.5" Width="2" />
@@ -343,7 +359,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Diary.App" Collapsed="true">
-    <Position X="14.75" Y="0.5" Width="1.5" />
+    <Position X="15" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAFAAAAhAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>App.xaml.cs</FileName>
@@ -360,7 +376,7 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="Diary.IDatabasePath" Collapsed="true">
-    <Position X="17" Y="0.5" Width="1.5" />
+    <Position X="15" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>IDatabasePath.cs</FileName>
